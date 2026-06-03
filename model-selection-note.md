@@ -1,10 +1,10 @@
 # Model Selection Note
 
-**Date:** 2026-06-03  
+**Date:** 2026-06-03 
 **Author:** Aleksei Bushnev — Senior Data Quality Engineer  
 **Project:** Enterprise IoT Data Quality Platform — client-confidential details omitted  
 **Task:** Produce a concise technical review for a PySpark parity bug in an IoT data pipeline migration.  
-**Committed location:** [Add your repo path or shared folder URL here]
+**Committed location:** https://github.com/AlexeyBushnev/AI-Run-Mission-2026/blob/main/module-010/model-selection-note.md   
 
 ---
 
