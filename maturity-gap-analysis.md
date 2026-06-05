@@ -65,8 +65,8 @@
 ---
 ## Peer Review
 
-**Reviewer:** Mariia Koval — AI Champion / DQ Engineering Lead
-**Date reviewed:** 2026-06-03
+**Reviewer:** Mariia Koval — DQ Engineering Lead
+**Date reviewed:** 2026-06-05
 
 | Review question | Reviewer answer |
 |---|---|
@@ -80,7 +80,7 @@
 
 ## Revision History
 
-| Version | Date | Change | Author |
-|---|---|---|---|
+| Version | Date       | Change | Author |
+|---|------------|---|---|
 | 1.0 | 2026-06-03 | Initial commit | Aleksei Bushnev |
-| 1.1 | 2026-06-03 | Updated committed location and completed peer review section with named reviewer | Aleksei Bushnev |
+| 1.1 | 2026-06-05 | Updated committed location and completed peer review section with Mariia Koval | Aleksei Bushnev |
