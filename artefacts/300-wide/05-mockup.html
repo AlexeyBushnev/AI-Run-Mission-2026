@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>05-mockup — Availability Assistant</title>
+  <style>
+    :root{
+      --bg:#f6f7fb;
+      --ink:#1f2937;
+      --muted:#6b7280;
+      --line:#d1d5db;
+      --card:#ffffff;
+      --ok:#166534;
+      --warn:#92400e;
+      --bad:#991b1b;
+      --soft-ok:#dcfce7;
+      --soft-warn:#fef3c7;
+      --soft-bad:#fee2e2;
+      --accent:#111827;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+    }
+    .wrap{
+      max-width:1100px;
+      margin:0 auto;
+      padding:24px;
+    }
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      margin-bottom:16px;
+    }
+    .title{
+      font-size:22px;
+      font-weight:700;
+    }
+    .subtitle{
+      color:var(--muted);
+      font-size:13px;
+      margin-top:4px;
+    }
+    .nav{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+    .nav button{
+      border:1px solid var(--line);
+      background:#fff;
+      padding:10px 14px;
+      border-radius:10px;
+      cursor:pointer;
+      font-weight:600;
+    }
+    .nav button.active{
+      background:var(--accent);
+      color:#fff;
+      border-color:var(--accent);
+    }
+    .screen{
+      display:none;
+      grid-template-columns: 1fr 320px;
+      gap:20px;
+      align-items:start;
+    }
+    .screen.active{ display:grid; }
+    .phone{
+      width:100%;
+      max-width:420px;
+      margin:0 auto;
+      background:#111827;
+      border-radius:28px;
+      padding:14px;
+      box-shadow:0 20px 40px rgba(0,0,0,.15);
+    }
+    .phone-inner{
+      background:#fff;
+      min-height:760px;
+      border-radius:20px;
+      overflow:hidden;
+      border:1px solid #111827;
+    }
+    .header{
+      padding:16px;
+      border-bottom:1px solid var(--line);
+      background:#fafafa;
+      font-weight:700;
+    }
+    .content{ padding:16px; }
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:16px;
+      margin-bottom:14px;
+    }
+    .product{
+      display:flex; gap:12px; align-items:flex-start;
+    }
+    .img{
+      width:92px; height:92px; background:#e5e7eb; border-radius:12px;
+      display:flex; align-items:center; justify-content:center; color:#6b7280; font-size:12px;
+      text-align:center; padding:8px;
+    }
+    h1,h2,h3,p{ margin:0 }
+    .product h2{ font-size:20px; margin-bottom:6px; }
+    .meta{ font-size:13px; color:var(--muted); margin-top:4px; }
+    .badge{
+      display:inline-block;
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:700;
+      margin:10px 0 8px;
+    }
+    .badge.warn{ background:var(--soft-warn); color:var(--warn); }
+    .badge.bad{ background:var(--soft-bad); color:var(--bad); }
+    .note{
+      font-size:13px; color:var(--muted); line-height:1.45; margin-top:6px;
+    }
+    .list{
+      display:grid; gap:10px; margin-top:10px;
+    }
+    .store{
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:12px;
+      display:grid;
+      gap:6px;
+    }
+    .store-top{
+      display:flex; justify-content:space-between; gap:10px; align-items:center;
+    }
+    .store-name{ font-weight:700; }
+    .small{ font-size:12px; color:var(--muted); }
+    .row{
+      display:flex; gap:8px; flex-wrap:wrap;
+    }
+    .chip{
+      font-size:12px;
+      padding:6px 8px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#fff;
+    }
+    .btn{
+      width:100%;
+      border:0;
+      border-radius:12px;
+      padding:12px 14px;
+      font-size:15px;
+      font-weight:700;
+      cursor:pointer;
+      margin-top:10px;
+    }
+    .btn.primary{ background:#111827; color:#fff; }
+    .btn.secondary{ background:#fff; color:#111827; border:1px solid var(--line); }
+    .btn.warn{ background:#92400e; color:#fff; }
+    .side{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:16px;
+      position:sticky;
+      top:20px;
+    }
+    .side h3{ font-size:16px; margin-bottom:8px; }
+    .side ul{ padding-left:18px; margin:8px 0 0; }
+    .side li{ margin:8px 0; line-height:1.45; }
+    .footer-note{
+      margin-top:16px;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.5;
+    }
+    .divider{
+      height:1px; background:var(--line); margin:14px 0;
+    }
+    .link{
+      color:#111827; text-decoration:underline; cursor:pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div>
+        <div class="title">05-mockup — Availability Assistant</div>
+        <div class="subtitle">Lo-fi 3-screen flow showing low-confidence and fallback behavior</div>
+      </div>
+      <div class="nav">
+        <button class="navbtn active" data-screen="screen1">1. Product page</button>
+        <button class="navbtn" data-screen="screen2">2. Reserve / confirm</button>
+        <button class="navbtn" data-screen="screen3">3. Pickup confirmation</button>
+      </div>
+    </div>
+
+    <!-- Screen 1 -->
+    <section id="screen1" class="screen active">
+      <div class="phone">
+        <div class="phone-inner">
+          <div class="header">Product page</div>
+          <div class="content">
+            <div class="card">
+              <div class="product">
+                <div class="img">Product image</div>
+                <div>
+                  <h2>Cordless Drill Kit</h2>
+                  <p class="meta">Pickup today • 2 stores nearby</p>
+                  <div class="badge warn">Likely available</div>
+                  <p class="note">Estimated from store data. Last confirmed 12 minutes ago. This is not a guaranteed hold.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Nearby stores</h3>
+              <div class="list">
+                <div class="store">
+                  <div class="store-top">
+                    <div>
+                      <div class="store-name">Meridian Downtown</div>
+                      <div class="small">1.2 km away</div>
+                    </div>
+                    <div class="badge warn" style="margin:0">Likely available</div>
+                  </div>
+                  <div class="row">
+                    <div class="chip">Confidence: 0.68</div>
+                    <div class="chip">Updated 12 min ago</div>
+                  </div>
+                  <button class="btn primary" onclick="go('screen2')">Reserve with caution</button>
+                </div>
+
+                <div class="store">
+                  <div class="store-top">
+                    <div>
+                      <div class="store-name">Meridian Riverside</div>
+                      <div class="small">3.8 km away</div>
+                    </div>
+                    <div class="badge bad" style="margin:0">Check with store</div>
+                  </div>
+                  <div class="row">
+                    <div class="chip">Confidence unavailable</div>
+                    <div class="chip">Data older than 30 min</div>
+                  </div>
+                  <button class="btn secondary" onclick="go('screen3')">Call store</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="side">
+        <h3>What this screen demonstrates</h3>
+        <ul>
+          <li>Low-confidence state uses <strong>“Likely available”</strong>, not “In stock”.</li>
+          <li>Disclosure states this is an <strong>estimate</strong>, not a guaranteed hold.</li>
+          <li>Fallback state appears when data is stale or confidence cannot be calculated.</li>
+        </ul>
+        <div class="divider"></div>
+        <h3>AI-aware AC coverage</h3>
+        <ul>
+          <li>Confidence threshold visible</li>
+          <li>Disclosure present</li>
+          <li>Fallback path present</li>
+        </ul>
+      </aside>
+    </section>
+
+    <!-- Screen 2 -->
+    <section id="screen2" class="screen">
+      <div class="phone">
+        <div class="phone-inner">
+          <div class="header">Reserve / confirm</div>
+          <div class="content">
+            <div class="card">
+              <h3>Reserve with caution</h3>
+              <div class="badge warn">Likely available</div>
+              <p class="note">This store looks likely to have the item, but stock is not certain. We will not promise a guaranteed hold until the store confirms.</p>
+              <div class="row" style="margin-top:10px">
+                <div class="chip">Confidence: 0.68</div>
+                <div class="chip">Updated 12 min ago</div>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Choose next step</h3>
+              <button class="btn primary" onclick="go('screen3')">Request confirmation</button>
+              <button class="btn secondary" onclick="go('screen1')">Pick another store</button>
+              <button class="btn secondary" onclick="go('screen3')">Call store instead</button>
+            </div>
+
+            <div class="card">
+              <h3>Important</h3>
+              <p class="note">We only confirm pickup after the store verifies availability. If verification fails, we will suggest another store or delivery option.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="side">
+        <h3>Why this matters</h3>
+        <ul>
+          <li>Prevents the false promise before the customer commits the trip.</li>
+          <li>Keeps speed in the flow while still exposing uncertainty.</li>
+          <li>Moves irreversible action behind a confirmation step.</li>
+        </ul>
+        <div class="divider"></div>
+        <h3>UX intent</h3>
+        <ul>
+          <li>Agent-led: estimate and display availability</li>
+          <li>Confirm-then-act: request hold / confirmation</li>
+        </ul>
+      </aside>
+    </section>
+
+    <!-- Screen 3 -->
+    <section id="screen3" class="screen">
+      <div class="phone">
+        <div class="phone-inner">
+          <div class="header">Pickup confirmation / fallback</div>
+          <div class="content">
+            <div class="card">
+              <h3>We can’t confirm this store right now</h3>
+              <div class="badge bad">Check with store</div>
+              <p class="note">Store data is stale or confidence is unavailable. We are not showing this item as available for pickup at this location.</p>
+              <div class="row" style="margin-top:10px">
+                <div class="chip">Data age: 34 min</div>
+                <div class="chip">No confidence score</div>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Safer options</h3>
+              <button class="btn primary" onclick="go('screen1')">See another store</button>
+              <button class="btn secondary">Choose delivery</button>
+              <button class="btn warn">Call Meridian Riverside</button>
+            </div>
+
+            <div class="card">
+              <h3>Feedback</h3>
+              <p class="note">Was this availability guidance helpful?</p>
+              <div class="row" style="margin-top:10px">
+                <button class="btn secondary" style="margin-top:0; flex:1">Yes</button>
+                <button class="btn secondary" style="margin-top:0; flex:1">No</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="side">
+        <h3>Fallback state shown</h3>
+        <ul>
+          <li>No confident estimate is shown when data is stale.</li>
+          <li>The flow offers alternatives: another store, delivery, or phone contact.</li>
+          <li>Feedback capture is present for the uncertain state.</li>
+        </ul>
+        <div class="footer-note">
+          This is intentionally rough. The goal is to demonstrate the behavior of the change, especially when the AI is unsure.
+        </div>
+      </aside>
+    </section>
+  </div>
+
+  <script>
+    function go(id){
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.navbtn').forEach(b => b.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      document.querySelector(`.navbtn[data-screen="${id}"]`).classList.add('active');
+    }
+    document.querySelectorAll('.navbtn').forEach(btn => {
+      btn.addEventListener('click', () => go(btn.dataset.screen));
+    });
+  </script>
+</body>
+</html>
