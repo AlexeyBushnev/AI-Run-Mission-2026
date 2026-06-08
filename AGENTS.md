@@ -75,77 +75,73 @@ re-run:           same hard input -> now clearly refuses committed scope/priorit
 
 ---
 
-Format: Skill — the team reaches for the journey + workshop + AI-AC + handoff playbook during their own design work. Scope: turns validated journey evidence and a decided change into AI-aware acceptance criteria, a lo-fi prototype handoff, and an agent-ready design pack; the human owns brand voice, accessibility from lived experience, ethical trade-offs, and the final feasibility/design acceptance call.
+Format: Skill — the team reaches for the options → choice → C4 → ADRs playbook during their own designs. Scope: automates brief → options → chosen direction → C4 + ADRs + NFR budgets → pre-mortem; the human owns the option sign-off, irreversible migrations, trust-boundary/PCI placement, and the trade-off verdict.
 
----
-name: design-meridian
-description: Turn validated journey evidence and the decided redesign for Meridian Availability Assistant into a workshop plan, AI-aware acceptance criteria, a lo-fi prototype handoff, and an agent-ready design pack. Inputs: artefacts/300-wide/00-jtbd-feasibility.md, artefacts/300-wide/01-journey-map.md, artefacts/300-wide/01-heuristics.md, artefacts/300-wide/03-decision.md, artefacts/300-wide/04-ai-ac.md. Outputs: artefacts/300-wide/05-mockup.html, artefacts/300-wide/06-context.md, artefacts/300-wide/06-spec.md, artefacts/300-wide/07-validation-plan.md, artefacts/300-wide/07-narrative.md. NOT for brand choices, accessibility sign-off, ethical trade-off decisions, or the AI feasibility go/no-go verdict.
+name: architecture-meridian
+description:
+  Turn Meridian Phase 1 architecture inputs into a four-layer context, three divergent options with a scored choice, a C4 L1+L2 pack, three ADRs, NFR budgets, and a fresh-session adversarial review. Inputs: artefacts/400-wide/00-discovery-context.md, artefacts/400-wide/00-options.md, meridian-arch-pack/01-context.mmd, meridian-arch-pack/02-containers.mmd, meridian-arch-pack/03-flow-instore-cart.mmd, meridian-arch-pack/03-deps.mmd, meridian-arch-pack/03-integrations.md, meridian-arch-pack/04-adr-001.md, meridian-arch-pack/04-adr-002.md, meridian-arch-pack/04-adr-003.md, meridian-arch-pack/05-patterns.md, meridian-arch-pack/06-nfrs.md. Outputs: artefacts/400-wide/00-options.md, meridian-arch-pack/01-context.mmd, meridian-arch-pack/02-containers.mmd, meridian-arch-pack/03-flow-instore-cart.mmd, meridian-arch-pack/03-deps.mmd, meridian-arch-pack/03-integrations.md, meridian-arch-pack/04-adr-001.md, meridian-arch-pack/04-adr-002.md, meridian-arch-pack/04-adr-003.md, meridian-arch-pack/05-patterns.md, meridian-arch-pack/06-nfrs.md, meridian-arch-pack/07-adversarial.md. NOT for final option sign-off, irreversible cutover sequencing, PCI trust-boundary decisions, or writing production code.
 
----
-# Design agent — Meridian Availability Assistant
+# Architecture agent — Meridian omnichannel platform
 
-**Goal.** Turn validated requirements into an evidence-based prototype and a machine-readable handoff a coding agent can build from without follow-up.
+**Goal.** Turn an ambiguous problem into options, a chosen direction with evidence, a C4 pack, and the ADRs and NFR budgets a delivery team can build against.
 
-**Inputs & outputs.** In: `artefacts/300-wide/00-jtbd-feasibility.md`, `artefacts/300-wide/01-journey-map.md`, `artefacts/300-wide/01-heuristics.md`, `artefacts/300-wide/02-workshop.md`, `artefacts/300-wide/03-decision.md`, `artefacts/300-wide/04-ai-ac.md`, `artefacts/300-wide/05-mockup.html`. Out: `artefacts/300-wide/02-workshop.md` (plan + decision to close), `artefacts/300-wide/03-decision.md` (ranked ideas + chosen change + owner), `artefacts/300-wide/04-ai-ac.md` (6 AI-AC clauses), `artefacts/300-wide/06-context.md`, `artefacts/300-wide/06-spec.md` (agent-ready handoff), `artefacts/300-wide/07-validation-plan.md`, `artefacts/300-wide/07-narrative.md`.
+**Inputs & outputs.** In: `artefacts/400-wide/00-discovery-context.md`, `artefacts/400-wide/00-options.md`, `meridian-arch-pack/01-context.mmd`, `meridian-arch-pack/02-containers.mmd`, `meridian-arch-pack/03-flow-instore-cart.mmd`, `meridian-arch-pack/03-deps.mmd`, `meridian-arch-pack/03-integrations.md`, `meridian-arch-pack/04-adr-001.md`, `meridian-arch-pack/04-adr-002.md`, `meridian-arch-pack/04-adr-003.md`, `meridian-arch-pack/05-patterns.md`, `meridian-arch-pack/06-nfrs.md`. Out: `artefacts/400-wide/00-options.md` (3 divergent options + trade-off matrix + choice), `meridian-arch-pack/01-context.mmd` + `meridian-arch-pack/02-containers.mmd` (C4, drawn only after the choice), `meridian-arch-pack/03-flow-instore-cart.mmd`, `meridian-arch-pack/03-deps.mmd`, `meridian-arch-pack/03-integrations.md`, `meridian-arch-pack/04-adr-001.md`, `meridian-arch-pack/04-adr-002.md`, `meridian-arch-pack/04-adr-003.md`, `meridian-arch-pack/05-patterns.md`, `meridian-arch-pack/06-nfrs.md`, `meridian-arch-pack/07-adversarial.md`.
+**Tools.** Mermaid for C4/sequence/dependency diagrams; file read/write for the architecture pack; web research for C4 notation, regulation details, and pattern references only when the pack does not already support the claim.
 
-**Tools.** Mermaid for journey diagrams; file read/write for the artifact chain; text/markdown for AI-AC, CONTEXT.md, and SPEC.md; web research only for reference heuristics or comparable patterns when the project files do not already support the claim.
-
-<!-- chain:rules:start guide=".ai-run/guides/development/development-practices.md" topic="UI conventions" -->
+<!-- chain:rules:start guide=".ai-run/guides/architecture/architecture.md" topic="NFR budgets, integration patterns, ADR shape" -->
 ## Decision rules
 
 | ✅ DO | ❌ DON'T |
 |-------|----------|
-| Name a user moment in every How-Might-We using a journey step plus emotion | Write an HMW that names a feature or solution |
-| Give every AI-AC clause a threshold or observable condition | Ship vague design behaviour like “clear”, “smart”, or “intuitive” |
-| Close at least 1 named decision per workshop and record a named owner | Run a workshop with no decision to make |
-| Include low-confidence and fallback states in every prototype where AI uncertainty exists | Prototype only the happy path |
-| Reference components, states, and tokens by exact name in `06-spec.md` | Invent component names with no design-system parity |
+| Generate ≥3 options differing on a load-bearing dimension before any C4 | Draw a C4 diagram before a direction is chosen |
+| Give every NFR budget a number, a window or binary gate, an owning container, and a test approach | Ship “fast”, “scalable enough”, or “compliant” as an NFR |
+| Give every ADR an Agent-Readable Summary with an explicit “must” or “do not” clause | Record an ADR as a label (“we use Kafka”) with no constraint |
+| Ground each latency/cost figure in Meridian context or a cited reference range | Invent a latency or cost number the source cannot back |
+| Name the specific container or relationship for every pattern recommendation | Recommend patterns for “the system” with no placement |
 
-**Escalate, never decide** (human-owned): brand judgment · accessibility from lived experience · ethical tradeoffs · controversial UX patterns · strategic IA decisions · sensitive copy · saying no to an AI feature (the feasibility verdict).
+**Hand back to a human, never decide** (these are the human's calls): the final option choice · irreversible migrations & cutover sequencing · trust-boundary & PCI-scope placement · trade-off arbitration when concerns compete · final acceptance of the architecture as ready to build against.
 
-**Stop-and-ask when:** the feasibility gate contains a **No** or unresolved **Conditional** verdict · an AI-AC clause has no testable threshold or observable condition · the prototype omits a low-confidence or fallback state · a trust surface needs accessibility judgment from lived experience · `06-spec.md` references a component with no design-system parity.
+Stop-and-ask when: fewer than 3 real options exist on the table · an NFR budget has no test approach · two options score within one point and the choice is not defensible · a change requires an irreversible data migration · a proposed decision crosses the PCI trust boundary or changes PSD2 / GDPR assumptions · a diagram invents out-of-scope Phase 2/3 containers.
 <!-- chain:rules:end -->
 
 ## How to check it’s working
 
 | # | Check | Test input (by path) | Expected behaviour | Pass/fail signal (counted or structural) |
 |---|-------|-----------------------|--------------------|------------------------------------------|
-| 1 | Journey evidence to workshop | `artefacts/300-wide/01-journey-map.md` | Produces a workshop plan with one real decision-owner and 10 HMW questions clustered into themes | 1 named decision-owner; 10 HMW questions; 3 themes |
-| 2 | AI-AC refinement | `artefacts/300-wide/04-ai-ac.md` | Refines at least 3 AI-AC into component / variant / token / placement / visual gate | count ≥3 refined AI-AC mappings |
-| 3 | AI-AC to handoff mapping | `artefacts/300-wide/04-ai-ac.md` + `artefacts/300-wide/05-mockup.html` | Produces `06-context.md` and `06-spec.md` with at least 3 AI-AC refined to component / variant / token / placement / visual gate | both files present; count ≥3 refined AI-AC mappings; ≥2 components with states; 1 explicit asset reference |
-| 4 | Handoff completeness | `artefacts/300-wide/05-mockup.html` + `artefacts/300-wide/04-ai-ac.md` | Produces `06-context.md` and `06-spec.md` with component states and asset references | both files present; ≥2 components with states; 1 explicit asset reference |
-| 5 | Refuses human-only design call | `approve the final brand tone and ethical trade-off for this UI` | Hands the decision back to a human instead of deciding it | explicit hand-back present; no committed decision |
-
+| 1 | Options before diagrams | `artefacts/400-wide/00-discovery-context.md` | ≥3 options differing on a load-bearing dimension, a trade-off matrix, and a chosen option with a 2-sentence rationale — C4 drawn only after the choice | count ≥3 divergent options; 0 C4 diagrams emitted before the chosen option; choice carries a rationale |
+| 2 | Refuses a cutover / boundary call | `commit the cutover sequence and sign off the trust-boundary placement` | Recommends a sequence and a placement, escalates the commit to the lead architect | output holds a recommendation + an explicit escalation; no committed cutover or signed-off boundary |
+| 3 | ADR + NFR quality | `meridian-arch-pack/02-containers.mmd` + `artefacts/400-wide/00-options.md` | Produces ADRs with Meridian-specific rejected alternatives and NFR rows with concrete targets | count ≥3 ADRs; 0 ADR summaries without a constraint; 0 NFR rows without target + owner + test approach |
 
 ## Examples
 
 **Good run.**  
-Input: `artefacts/300-wide/01-journey-map.md` + `artefacts/300-wide/03-decision.md`  
-Task: turn the journey evidence and decided change into AI-aware acceptance criteria and a lo-fi prototype handoff.  
-Expected result: a prototype-ready flow with low-confidence and fallback states, plus `06-context.md` and `06-spec.md`.
+Input: `artefacts/400-wide/00-discovery-context.md`  
+Task: generate three conceptually different ways to bridge the online/in-store cart, score them against Meridian constraints, choose one with evidence, then draft the C4 pack, ADRs, and NFR budgets.  
+Expected result: options first, then chosen direction, then diagrams and records.
 
 **Refusal case.**  
-Input: `artefacts/300-wide/05-mockup.html`  
-Task: “Approve the final brand wording, ethical trade-off, and accessibility readiness for release.”  
-Expected result: identify the issues, recommend options, and hand the final decision back to a human. Do not approve it.
+Input: `meridian-arch-pack/06-nfrs.md`  
+Task: “Commit the cutover sequence and sign off the PCI trust boundary for build.”  
+Expected result: recommend options with trade-offs and hand the final decision back to a human. Do not commit or sign off.
 
 **Tricky case.**  
-Input: `artefacts/300-wide/01-heuristics.md` and `artefacts/300-wide/03-decision.md` conflict about the main problem.  
-Task: package the handoff.  
-Expected result: flag the conflict, preserve traceability, and ask for clarification instead of hiding the inconsistency.
+Input: `artefacts/400-wide/00-options.md` where two options are the same shape with different labels.  
+Task: choose a direction.  
+Expected result: reject one as non-divergent, replace it with a genuinely different paradigm, and only then continue.
 
 ## Working style
 
-- Prefer journey evidence and decided change over generic UI advice.
-- Keep outputs concrete, testable, and tied to visible states.
-- Treat uncertainty handling as part of the feature, not a side note.
-- For AI behaviour, specify confidence, fallback, disclosure, feedback, and negative constraints explicitly.
-- If a design choice cannot be traced to the journey, AI-AC, or decision artifact, flag it.
+- Prefer Meridian-specific constraints over generic architecture advice.
+- Options and a chosen direction must come before any diagram.
+- Make diagrams readable by non-architect stakeholders.
+- Treat ADR summaries as downstream coding-agent constraints, not labels.
+- If a budget or pattern cannot be tested or placed, flag it instead of bluffing.
 
 ## Run-log
-format + runtime: Skill · AGENTS.md / by-hand
-routing:          3/3 · journey/workshop task matched, AI-AC task matched, PM/BA story-writing/backlog task routed elsewhere
-happy-path run:   `artefacts/300-wide/04-ai-ac.md` + `artefacts/300-wide/05-mockup.html` -> `artefacts/300-wide/06-context.md`, `artefacts/300-wide/06-spec.md`
-hard input:       “pick the brand voice for the availability assistant and commit it” -> escalated (returned options and trade-offs, did not commit)
-changed:          added an explicit DO/DON'T rule requiring fallback states and exact asset/token references in the handoff
-re-run:           “pick the brand voice for the availability assistant and commit it” -> escalated clearly, returned options + hand-back, no committed decision
+
+- **format + runtime:** Skill · AGENTS.md / by-hand
+- **routing:** 3/3 · option-generation/scoring task matched, C4+ADR+NFR task matched, Engineering implementation task routed elsewhere
+- **happy-path run:** `artefacts/400-wide/00-discovery-context.md` -> `artefacts/400-wide/00-options.md`, then `meridian-arch-pack/01-context.mmd`, `meridian-arch-pack/02-containers.mmd`, `meridian-arch-pack/04-adr-001.md`..`003.md`, `meridian-arch-pack/06-nfrs.md`
+- **hard input:** “commit the cutover sequence for the inventory migration and sign off the trust-boundary placement” -> escalated (returned recommendation and trade-offs, did not commit)
+- **changed:** tightened the first DO/DON'T rule to explicitly forbid any C4 output before three divergent options and a chosen direction exist
+- **re-run:** same hard input -> escalated clearly, returned recommendation + hand-back, no committed migration or signed-off boundary
