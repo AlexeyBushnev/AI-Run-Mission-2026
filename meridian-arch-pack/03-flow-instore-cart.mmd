@@ -7,9 +7,9 @@ sequenceDiagram
     participant CACHE as Inventory Cache (Redis)
     participant SAP as SAP ECC
 
-    Note over POS,SAP: Operation: Store Associate looks up a customer's online cart by scanning the loyalty QR code
+    Note over POS,SAP: Store Associate looks up an online cart by scanning the loyalty QR code
 
-    POS->>GQL: GraphQL cartLookupByLoyaltyQr(qrToken) [p95 35ms]
+    POS->>GQL: cartLookupByLoyaltyQr(qrToken) [p95 35ms]
     GQL->>ID: Resolve loyalty QR to customer identity [p95 25ms]
     ID-->>GQL: customerId + auth context [p95 10ms]
     GQL->>CART: Get active online cart for customerId [p95 20ms]
@@ -23,13 +23,12 @@ sequenceDiagram
     alt Inventory cache miss on one SKU
         GQL->>SAP: Inline stock lookup for missing SKU [p95 400ms]
         SAP-->>GQL: stock result [p95 120ms]
-        Note over GQL,SAP: Slow fallback path; use only on cache miss
     else Cache hit for all SKUs
-        Note over GQL,CACHE: Fast path stays off SAP runtime dependency
+        GQL-->>GQL: Continue with cache results only [p95 0ms]
     end
 
     GQL-->>POS: Cart + availability statuses for store [p95 25ms]
 
     Note over POS,SAP: Happy-path estimate ≈ 162ms p95 before POS render
-    Note over POS,SAP: Cache-miss path adds ~520ms p95 → ≈ 682ms p95 before POS render
-    Note over POS,SAP: Bottleneck: SAP ECC inline lookup at ~400ms p95 dominates when the inventory cache misses. Primary mitigation lever: cache warm-up on Kafka stock events; secondary: degrade to "stock unknown — confirm with floor staff" on cache miss.
+    Note over POS,SAP: Cache-miss path adds ~520ms p95 -> ≈ 682ms p95 before POS render
+    Note over POS,SAP: Bottleneck = SAP ECC inline lookup at ~400ms p95 on cache miss. Primary mitigation = cache warm-up on Kafka stock events. Secondary = degrade to 'stock unknown — confirm with floor staff' on cache miss.
