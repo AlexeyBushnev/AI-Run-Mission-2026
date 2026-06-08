@@ -1,0 +1,6 @@
+timestamp,level,service,message
+2026-06-08T09:00:00Z,info,checkout, Payment failed for order 123 
+2026-06-08T09:05:00Z,INFO,checkout,Payment   failed for order 123
+2026-06-08T09:10:00Z,,auth,Token refresh needed
+not-a-timestamp,warn,inventory,Stock sync delayed
+2026-06-08T09:20:00Z,error,checkout,Card declined

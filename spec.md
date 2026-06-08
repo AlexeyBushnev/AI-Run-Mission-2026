@@ -97,3 +97,8 @@ CLI behavior:
 
 ## Signed off
 AB — 2026-06-08
+
+
+## Implementation notes
+- Surprise: `datetime.fromisoformat()` does not accept a trailing `Z` directly, so the implementation converts `Z` to `+00:00` before parsing.
+- Decision: malformed timestamp rows are skipped with a warning to stderr, while missing `level` is normalized to `UNKNOWN` and still included in aggregation.
