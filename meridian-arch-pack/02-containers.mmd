@@ -1,0 +1,47 @@
+C4Container
+title Meridian Retail Group — Phase 1 Container Diagram
+
+Person(customer, "Customer", "Uses web and mobile channels")
+Person(storeAssociate, "Store Associate (POS)", "Supports in-store cart lookup and pickup")
+
+System_Ext(stripe, "Stripe", "Payment processor")
+System_Ext(sap, "SAP ECC", "Inventory ground truth")
+System_Ext(auth0, "Auth0", "Identity provider")
+System_Ext(crm, "Regional CRMs", "Regional customer systems")
+System_Ext(sendgrid, "SendGrid", "Email delivery")
+
+System_Boundary(meridian_boundary, "Meridian Phase 1 — Omnichannel Commerce Platform") {
+    Container(webApp, "Web App", "Next.js", "Customer-facing web commerce experience")
+    Container(mobileApp, "Mobile App", "React Native", "Customer-facing mobile commerce experience")
+    Container(gateway, "Apollo GraphQL Gateway", "Node.js / Apollo GraphQL", "API gateway for web and mobile clients")
+    Container(identitySvc, "Identity Service", "Node.js service", "Handles Auth0 token exchange, session, and identity orchestration")
+    Container(cartSvc, "Cart Service", "Node.js microservice", "Owns cart lifecycle and cart lookup flows")
+    Container(checkoutSvc, "Checkout Service", "Node.js microservice", "Owns checkout flow, payment initiation, and order submission")
+    ContainerQueue(orderBus, "Order Event Bus", "Kafka", "Publishes order and cart-related domain events")
+    ContainerDb(orderDb, "Order Database", "PostgreSQL on Amazon RDS", "Stores order and checkout state")
+    ContainerDb(inventoryCache, "Inventory Read Cache", "Redis", "Read-optimized inventory/cache view for fast availability checks")
+}
+
+Rel(customer, webApp, "Browses and checks out via", "HTTPS")
+Rel(customer, mobileApp, "Browses and checks out via", "HTTPS")
+Rel(storeAssociate, cartSvc, "Looks up in-store cart / pickup order via", "JSON/HTTPS")
+
+Rel(webApp, gateway, "Queries and mutates commerce data through", "GraphQL/HTTPS")
+Rel(mobileApp, gateway, "Queries and mutates commerce data through", "GraphQL/HTTPS")
+
+Rel(gateway, identitySvc, "Requests authentication/session context from", "JSON/HTTPS")
+Rel(gateway, cartSvc, "Reads and updates cart through", "JSON/HTTPS")
+Rel(gateway, checkoutSvc, "Submits checkout and order requests to", "JSON/HTTPS")
+Rel(gateway, inventoryCache, "Reads inventory availability from", "RESP/TCP")
+
+Rel(identitySvc, auth0, "Authenticates user and validates tokens with", "OAuth2 / OIDC over HTTPS")
+Rel(cartSvc, orderBus, "Publishes cart events to", "Kafka protocol")
+Rel(checkoutSvc, stripe, "Creates payment intents and captures payment via", "JSON/HTTPS")
+Rel(stripe, checkoutSvc, "Sends async payment confirmation webhook to", "Webhook / HTTPS")
+Rel(checkoutSvc, orderDb, "Stores order and checkout state in", "SQL/TCP")
+Rel(checkoutSvc, orderBus, "Publishes order events to", "Kafka protocol")
+Rel(inventoryCache, sap, "Hydrates / refreshes inventory view from", "API / Integration interface")
+Rel(cartSvc, inventoryCache, "Checks item availability in", "RESP/TCP")
+Rel(checkoutSvc, inventoryCache, "Validates availability before order placement via", "RESP/TCP")
+Rel(identitySvc, crm, "Reads customer context / loyalty profile from", "API / HTTPS")
+Rel(checkoutSvc, sendgrid, "Triggers order confirmation email through", "API / HTTPS")

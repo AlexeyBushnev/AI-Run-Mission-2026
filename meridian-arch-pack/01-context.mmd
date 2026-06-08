@@ -1,0 +1,30 @@
+C4Context
+title Meridian Retail Group — Phase 1 Context Diagram
+
+Person(customer, "Customer", "Browses products, manages cart, and completes checkout via web or mobile")
+Person(storeAssociate, "Store Associate (POS)", "Supports in-store pickup and order lookup at the point of sale")
+Person(marketingOps, "Marketing Ops", "Runs campaigns and uses regional CRM data")
+
+System_Boundary(meridian_boundary, "Meridian Phase 1 — Omnichannel Commerce Platform") {
+    System(meridian, "Meridian Phase 1 Platform", "Unified identity, cart, and checkout for web and mobile during strangler-fig cutover")
+}
+
+System_Ext(stripe, "Stripe", "Payment processing and async payment confirmation")
+System_Ext(sap, "SAP ECC", "Inventory ground truth and core enterprise inventory source")
+System_Ext(crm, "Regional CRMs", "Regional customer and campaign systems (6 total)")
+System_Ext(auth0, "Auth0", "Identity provider for authentication and session flows")
+System_Ext(sendgrid, "SendGrid", "Email delivery for transactional notifications")
+System_Ext(logistics, "Regional Logistics Provider", "Shipping / tracking events for orders")
+
+Rel(customer, meridian, "Browses catalog, manages cart, and places order via", "JSON/HTTPS")
+Rel(storeAssociate, meridian, "Looks up in-store cart and pickup order via", "JSON/HTTPS")
+Rel(marketingOps, crm, "Operates campaigns and customer segmentation in", "Web UI / API")
+
+Rel(meridian, auth0, "Authenticates customer and retrieves identity claims via", "OAuth2 / OIDC over HTTPS")
+Rel(meridian, stripe, "Authorises and captures payment via", "JSON/HTTPS")
+Rel(stripe, meridian, "Sends async payment confirmation webhook to", "Webhook / HTTPS")
+Rel(meridian, sap, "Reads inventory and order-related enterprise data from", "API / Integration interface")
+Rel(meridian, crm, "Reads and updates regional customer context via", "API / HTTPS")
+Rel(crm, meridian, "Pushes campaign and customer updates to", "Webhook / HTTPS")
+Rel(meridian, sendgrid, "Sends checkout and order emails through", "API / HTTPS")
+Rel(logistics, meridian, "Pushes shipment / tracking updates to", "Webhook / HTTPS")
