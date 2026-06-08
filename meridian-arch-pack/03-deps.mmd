@@ -1,11 +1,11 @@
 graph TD
-    POS[POS Client]
-    GQL[Apollo Gateway]
-    ID[Identity Service]
-    CART[Cart Service]
-    CACHE[Inventory Cache (Redis)]
-    SAP[SAP ECC]
-    KAFKA[Order Event Bus (Kafka)]
+    POS["POS Client"]
+    GQL["Apollo Gateway"]
+    ID["Identity Service"]
+    CART["Cart Service"]
+    CACHE["Inventory Cache (Redis)"]
+    SAP["SAP ECC"]
+    KAFKA["Order Event Bus (Kafka)"]
 
     POS -->|GraphQL/HTTPS| GQL
     GQL -->|JSON/HTTPS| ID
@@ -13,12 +13,6 @@ graph TD
     GQL -->|RESP/TCP| CACHE
     GQL -->|API / integration fallback only| SAP
 
-    KAFKA -. warms cache async .-> CACHE
-    SAP -. publishes inventory changes via integration/event feed .-> KAFKA
-
-    CART -. publishes cart/order events .-> KAFKA
-
-    %% Transitive dependency interpretation:
-    %% POS depends directly on Apollo Gateway,
-    %% and transitively on Identity Service, Cart Service, Inventory Cache,
-    %% plus SAP ECC on cache miss and Kafka for warm-cache freshness.
+    KAFKA -. "warms cache async" .-> CACHE
+    SAP -. "publishes inventory changes via integration/event feed" .-> KAFKA
+    CART -. "publishes cart/order events" .-> KAFKA
