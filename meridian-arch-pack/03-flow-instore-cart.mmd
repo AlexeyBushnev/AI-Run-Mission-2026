@@ -1,0 +1,35 @@
+sequenceDiagram
+    autonumber
+    participant POS as POS Client
+    participant GQL as Apollo Gateway
+    participant ID as Identity Service
+    participant CART as Cart Service
+    participant CACHE as Inventory Cache (Redis)
+    participant SAP as SAP ECC
+
+    Note over POS,SAP: Operation: Store Associate looks up a customer's online cart by scanning the loyalty QR code
+
+    POS->>GQL: GraphQL cartLookupByLoyaltyQr(qrToken) [p95 15ms network + 20ms gateway]
+    GQL->>ID: Resolve loyalty QR to customer identity [p95 25ms]
+    ID-->>GQL: customerId + auth context [p95 10ms]
+    GQL->>CART: Get active online cart for customerId [p95 20ms]
+    CART-->>GQL: cart with 4 line items [p95 15ms]
+
+    loop Per line item availability check
+        GQL->>CACHE: Check store availability by SKU/store [p95 5ms]
+        CACHE-->>GQL: availability result [p95 3ms]
+    end
+
+    alt Inventory cache miss on one SKU
+        GQL->>SAP: Inline stock lookup for missing SKU [p95 400ms]
+        SAP-->>GQL: stock result [p95 120ms]
+        Note over GQL,SAP: Slow fallback path; use only on cache miss
+    else Cache hit for all SKUs
+        Note over GQL,CACHE: Fast path stays off SAP runtime dependency
+    end
+
+    GQL-->>POS: Cart + availability statuses for store [p95 25ms]
+
+    Note over POS,SAP: Happy-path estimate: 15 + 20 + 25 + 10 + 20 + 15 + (4 x 8) + 25 ≈ 162ms p95 before POS render
+    Note over POS,SAP: Cache-miss path adds ~520ms p95 (SAP inline lookup + return) → ≈ 682ms p95 before POS render
+    Note over POS,SAP: Bottleneck: SAP ECC inline lookup at ~400ms p95 dominates when the inventory cache misses. Primary mitigation lever: cache warm-up on Kafka stock events; secondary: degrade to "stock unknown — confirm with floor staff" on cache miss.
