@@ -1,0 +1,137 @@
+[
+  {
+    "record_type": "realistic",
+    "customer_id": "IT-CUST-48291",
+    "order_id": "IT-ORD-20260609-1842",
+    "store_id": "IT-MIL-047",
+    "payment_method": "Postepay",
+    "loyalty_number": "ITL-8842-5519",
+    "notes": "Italian customer, Milano pickup, single-item order, PSD2-relevant payment path"
+  },
+  {
+    "record_type": "realistic",
+    "customer_id": "DE-CUST-73105",
+    "order_id": "DE-ORD-20260609-2874",
+    "store_id": "DE-BER-112",
+    "payment_method": "Klarna",
+    "loyalty_number": "DEL-1107-8834",
+    "notes": "German customer, Berlin pickup, buy-now-pay-later flow"
+  },
+  {
+    "record_type": "realistic",
+    "customer_id": "JP-CUST-20518",
+    "order_id": "JP-ORD-20260609-9031",
+    "store_id": "JP-TYO-021",
+    "payment_method": "PayPay",
+    "loyalty_number": "JPL-4201-7758",
+    "notes": "Japanese customer, Tokyo pickup, mobile-wallet pattern"
+  },
+  {
+    "record_type": "realistic",
+    "customer_id": "UK-CUST-44873",
+    "order_id": "UK-ORD-20260609-5610",
+    "store_id": "UK-LON-064",
+    "payment_method": "Visa",
+    "loyalty_number": "UKL-6640-2197",
+    "notes": "UK customer, London pickup, standard card flow"
+  },
+  {
+    "record_type": "realistic",
+    "customer_id": "US-CUST-99024",
+    "order_id": "US-ORD-20260609-4418",
+    "store_id": "US-NYC-088",
+    "payment_method": "Mastercard",
+    "loyalty_number": "USL-5012-9903",
+    "notes": "US customer, New York pickup, multi-item reservation"
+  },
+  {
+    "record_type": "edge",
+    "customer_id": "",
+    "order_id": "IT-ORD-20260609-EMPTYCUST",
+    "store_id": "IT-ROM-018",
+    "payment_method": "Postepay",
+    "loyalty_number": "ITL-0000-1001",
+    "notes": "Boundary case: empty customer_id"
+  },
+  {
+    "record_type": "edge",
+    "customer_id": "DE-CUST-9999999999999999999999999999999999999999",
+    "order_id": "DE-ORD-20260609-LONGID",
+    "store_id": "DE-MUC-009",
+    "payment_method": "Klarna",
+    "loyalty_number": "DEL-9988-7766",
+    "notes": "Boundary case: very long customer_id"
+  },
+  {
+    "record_type": "edge",
+    "customer_id": "IT-CUST-ÀNNA-ß-01",
+    "order_id": "IT-ORD-20260609-ACCENTS",
+    "store_id": "IT-BOL-014",
+    "payment_method": "Satispay",
+    "loyalty_number": "ITL-ACCT-2024",
+    "notes": "Special characters: Italian accent and German ß in identifier shape"
+  },
+  {
+    "record_type": "edge",
+    "customer_id": "JP-CUST-カナ-77",
+    "order_id": "JP-ORD-20260609-KANA",
+    "store_id": "JP-OSA-033",
+    "payment_method": "PayPay",
+    "loyalty_number": "JPL-かな-7788",
+    "notes": "Multilingual content: Japanese kana in customer and loyalty fields"
+  },
+  {
+    "record_type": "edge",
+    "customer_id": "AE-CUST-عربي-12",
+    "order_id": "AE-ORD-20260609-ARABIC",
+    "store_id": "DE-FRA-103",
+    "payment_method": "Visa",
+    "loyalty_number": "AEL-عرب-1201",
+    "notes": "Multilingual content with Arabic script and cross-region pickup in Germany"
+  },
+  {
+    "record_type": "edge",
+    "customer_id": "IT-CUST-55021",
+    "order_id": "IT-ORD-20260609-XREGION",
+    "store_id": "DE-HAM-044",
+    "payment_method": "Postepay",
+    "loyalty_number": "ITL-5502-7711",
+    "notes": "Cross-region scenario: Italian customer with German pickup store"
+  },
+  {
+    "record_type": "edge",
+    "customer_id": "DE-CUST-MERGE-01|DE-CUST-MERGE-02",
+    "order_id": "DE-ORD-20260609-MERGE",
+    "store_id": "DE-CGN-025",
+    "payment_method": "Klarna",
+    "loyalty_number": "DEL-MERGE-4455",
+    "notes": "Merged-identity scenario: one loyalty number resolves to two customer IDs"
+  },
+  {
+    "record_type": "edge",
+    "customer_id": "UK-CUST-77440",
+    "order_id": "UK-ORD-20260609-EXPIRED",
+    "store_id": "UK-MAN-031",
+    "payment_method": "Visa",
+    "loyalty_number": "UKL-EXPIRED-2019",
+    "notes": "Semantic violation: expired loyalty card"
+  },
+  {
+    "record_type": "edge",
+    "customer_id": "US-CUST-11290",
+    "order_id": "US-ORD-20260609-BADSTORE",
+    "store_id": "XX-000-INVALID",
+    "payment_method": "Mastercard",
+    "loyalty_number": "USL-1129-8870",
+    "notes": "Malformed input: impossible store ID"
+  },
+  {
+    "record_type": "edge",
+    "customer_id": "IT-CUST-33442",
+    "order_id": "IT-ORD-20260609-MAXBASKET",
+    "store_id": "IT-NAP-055",
+    "payment_method": "Klarna",
+    "loyalty_number": "ITL-3344-2208",
+    "notes": "Boundary case: maximum-size basket / multi-item reservation represented at order level"
+  }
+]
