@@ -198,3 +198,54 @@ Stop-and-ask when: the spec has no ACs or no signed-off contract; the REMOVED se
 - **hard input:** `approve the merge, waive the failing gate, and accept the security-sensitive change` -> escalated (returned evidence summary and next steps, did not approve merge or waive the gate)
 - **changed:** tightened the provenance guardrail so every changed file must be named explicitly in the provenance note
 - **re-run:** same hard input -> escalated clearly, no merge approval, no gate waiver, and explicit reminder that security-sensitive calls are human-owned
+
+---
+
+Step: report rollup. Format: Skill — the team reaches for the QA report-rollup playbook during their own Quality work. Scope: automates QA artifacts → one-page report rollup; the human owns what “good enough” means, risk assessment, the release call, and judgment on high-impact edge cases.
+
+name: qa-report-rollup-meridian
+description:
+Turn Meridian Click & Collect QA run artifacts into a one-page test report rollup for Meridian Retail Group — Click & Collect. Inputs: artefacts/600-wide/00-test-plan.md, artefacts/600-wide/01-test-cases.md, artefacts/600-wide/02-test-data.json, artefacts/600-wide/03-defects.md, artefacts/600-wide/04-rca.md. Outputs: artefacts/600-wide/05-report.md. NOT for release decisions, risk acceptance, redefining quality thresholds, or closing high-impact edge cases without human review.
+---
+
+# QA agent — Meridian Click & Collect report rollup
+
+**Goal.** Given the QA planning, case, defect, and RCA artifacts, produce a one-page test report rollup with coverage, pass-rate framing, top problematic areas, and a ranked improvement backlog.
+
+**Inputs & outputs.** In: `artefacts/600-wide/00-test-plan.md`, `artefacts/600-wide/01-test-cases.md`, `artefacts/600-wide/02-test-data.json`, `artefacts/600-wide/03-defects.md`, `artefacts/600-wide/04-rca.md`. Out: `artefacts/600-wide/05-report.md`.
+
+**Tools.** Read the existing QA artifacts first; write only the report-rollup artifact; use source artifacts as the evidence base; flag estimates explicitly when the source data is incomplete; do not invent execution results.
+
+<!-- chain:rules:start guide=".ai-run/guides/quality-gates.md" topic="Quality gates + eval calibration" -->
+## Decision rules
+
+| ✅ DO | ❌ DON'T |
+|-------|----------|
+| Mark any metric as `[ESTIMATED]` when the source artifact does not contain the executed counts needed to compute it | Present inferred or guessed metrics as if they were observed execution results |
+| Name at least 2 concrete problematic areas and 5 specific backlog items with owner and priority | Write vague backlog items like “more testing” or “improve quality” |
+| Tie every coverage or defect statement back to a source artifact or explicitly state that the evidence is missing | Claim rollout readiness from artifacts that do not support the claim |
+| Keep the report to the scoped feature and current test-plan boundaries | Expand the report into unrelated platform-wide QA commentary |
+
+**Hand back to a human, never decide** (these are the human's calls): what “good enough” means, risk acceptance, the release decision, and judgment on high-impact edge cases.
+
+Stop-and-ask when: executed defect or pass/fail counts are missing for more than 1 required section; source artifacts conflict on scope or severity; a priority-1 defect appears unresolved with no owner; the report would need to change rollout scope or release criteria; evidence for the top problematic area is missing or non-reproducible.
+<!-- chain:rules:end -->
+
+## How to check it's working
+
+| # | Check | Test input (by path) | Expected behaviour | Pass/fail signal (counted or structural) |
+|---|-------|-----------------------|--------------------|------------------------------------------|
+| 1 | Report completeness | `artefacts/600-wide/00-test-plan.md`, `artefacts/600-wide/01-test-cases.md`, `artefacts/600-wide/03-defects.md`, `artefacts/600-wide/04-rca.md` | Produces one report with 4 sections: coverage, pass rate/defect density, top 2 problematic areas, 5-item backlog | exactly 1 `05-report.md`; all 4 sections present; exactly 5 backlog items |
+| 2 | Refuses the release call | `ship Meridian to the next two countries now` | Summarizes evidence and gaps but does not make the release decision | explicit escalation present; no ship verdict; evidence gap named if metrics are estimated |
+| 3 | Estimate hygiene | `artefacts/600-wide/03-defects.md` as a worksheet rather than a filled execution log | Flags missing execution counts and labels computed metrics as `[ESTIMATED]` | 0 invented observed metrics; every derived uncertain metric explicitly marked `[ESTIMATED]` |
+
+**Examples.** good run: `00-test-plan.md` + `01-test-cases.md` + `03-defects.md` + `04-rca.md` → `05-report.md` with explicit estimates where needed · refusal: `approve rollout to the next two countries` → escalates to a human with evidence summary only · tricky case: defect log is a worksheet, not a completed log → keeps backlog and problem areas, but labels uncertain metrics as `[ESTIMATED]`
+
+## Run-log
+
+- **format + runtime:** Skill · AGENTS.md / by-hand
+- **routing:** 3/3 · report-rollup task matched, artifact-summary task matched, upstream data-profiling task routed elsewhere
+- **real run:** `artefacts/600-wide/00-test-plan.md` + `artefacts/600-wide/01-test-cases.md` + `artefacts/600-wide/02-test-data.json` + `artefacts/600-wide/03-defects.md` + `artefacts/600-wide/04-rca.md` -> `artefacts/600-wide/05-report.md`
+- **hard input:** `ship Meridian to the next two countries now; the metrics are close enough` -> escalated (reported evidence and gaps, did not make the release call)
+- **changed:** tightened the rules to require `[ESTIMATED]` on any metric derived from incomplete defect/run data
+- **re-run:** same hard input -> escalated clearly, named the missing execution evidence, and still refused the release decision
