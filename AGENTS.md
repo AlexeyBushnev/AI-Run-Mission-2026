@@ -201,51 +201,58 @@ Stop-and-ask when: the spec has no ACs or no signed-off contract; the REMOVED se
 
 ---
 
-Step: report rollup. Format: Skill — the team reaches for the QA report-rollup playbook during their own Quality work. Scope: automates QA artifacts → one-page report rollup; the human owns what “good enough” means, risk assessment, the release call, and judgment on high-impact edge cases.
+Step: LLM-as-judge runner. Format: Skill — the team reaches for the rubric + golden-set + calibration playbook during their own Quality work. Scope: scores a batch against the versioned rubric, reports per-rule agreement, flags borderlines, and hands the release judgment back to a human.
 
-name: qa-report-rollup-meridian
+name: qa-judge-runner-meridian
 description:
-Turn Meridian Click & Collect QA run artifacts into a one-page test report rollup for Meridian Retail Group — Click & Collect. Inputs: artefacts/600-wide/00-test-plan.md, artefacts/600-wide/01-test-cases.md, artefacts/600-wide/02-test-data.json, artefacts/600-wide/03-defects.md, artefacts/600-wide/04-rca.md. Outputs: artefacts/600-wide/05-report.md. NOT for release decisions, risk acceptance, redefining quality thresholds, or closing high-impact edge cases without human review.
----
+Score a batch of Meridian AI-feature outputs against the versioned rubric, per dimension, with reasoning; report the per-rule judge-human agreement rate; flag borderlines for human review. Inputs: eval-pack/00-rubric.md, eval-pack/01-golden-set.jsonl, eval-pack/REFERENCE.md. Outputs: eval-pack/02-judge-run.md. NOT for deciding what “good enough” means, assigning risk scores, retiring rubric rules, changing calibration thresholds, or making the release call.
 
-# QA agent — Meridian Click & Collect report rollup
+# QA judge-runner agent — Meridian AI feature eval pack
 
-**Goal.** Given the QA planning, case, defect, and RCA artifacts, produce a one-page test report rollup with coverage, pass-rate framing, top problematic areas, and a ranked improvement backlog.
+**Goal.** Given the rubric and a batch of outputs, score each output per dimension with one-line reasoning, report agreement per rule, and flag every borderline for a human.
 
-**Inputs & outputs.** In: `artefacts/600-wide/00-test-plan.md`, `artefacts/600-wide/01-test-cases.md`, `artefacts/600-wide/02-test-data.json`, `artefacts/600-wide/03-defects.md`, `artefacts/600-wide/04-rca.md`. Out: `artefacts/600-wide/05-report.md`.
+**Inputs & outputs.** In: `eval-pack/00-rubric.md`, `eval-pack/01-golden-set.jsonl`, `eval-pack/REFERENCE.md`. Out: `eval-pack/02-judge-run.md` (per-prompt × per-dimension scores, per-rule agreement rate, borderline list, decision/confidence/risk_flags when escalated).
 
-**Tools.** Read the existing QA artifacts first; write only the report-rollup artifact; use source artifacts as the evidence base; flag estimates explicitly when the source data is incomplete; do not invent execution results.
+**Tools.** Read the versioned rubric, golden set, and reference context first; write only the judge-run artifact; preserve bucket structure and source fields; never invent agreement results that are not supported by the run inputs.
 
 <!-- chain:rules:start guide=".ai-run/guides/quality-gates.md" topic="Quality gates + eval calibration" -->
 ## Decision rules
 
 | ✅ DO | ❌ DON'T |
 |-------|----------|
-| Mark any metric as `[ESTIMATED]` when the source artifact does not contain the executed counts needed to compute it | Present inferred or guessed metrics as if they were observed execution results |
-| Name at least 2 concrete problematic areas and 5 specific backlog items with owner and priority | Write vague backlog items like “more testing” or “improve quality” |
-| Tie every coverage or defect statement back to a source artifact or explicitly state that the evidence is missing | Claim rollout readiness from artifacts that do not support the claim |
-| Keep the report to the scoped feature and current test-plan boundaries | Expand the report into unrelated platform-wide QA commentary |
+| Ground every score in a named rubric rule | Score on overall impression with no rule cited |
+| Hold the judge below ship until per-rule agreement is **>= 85%** | Ship a score on a rule with agreement **< 85%** |
+| Flag any output within one band of the pass line as borderline | Auto-pass a borderline without a human read |
+| Preserve the golden-set buckets at **10/8/6/3/3** across a run | Drop or rebucket entries to make a run cleaner |
+| Require every golden-set entry to have a non-empty `source` field | Score or summarize entries with an empty `source` as if the evidence were complete |
 
-**Hand back to a human, never decide** (these are the human's calls): what “good enough” means, risk acceptance, the release decision, and judgment on high-impact edge cases.
-
-Stop-and-ask when: executed defect or pass/fail counts are missing for more than 1 required section; source artifacts conflict on scope or severity; a priority-1 defect appears unresolved with no owner; the report would need to change rollout scope or release criteria; evidence for the top problematic area is missing or non-reproducible.
+**Hand back to a human, never decide** (these are the human's calls): acceptance criteria (what “good enough” means), risk assessment (how strict the gate is), the release decision, edge-case and high-impact review.
+Stop-and-ask when: per-rule agreement < 85%; a known-bad calibration output scored as a pass; a golden-set bucket count drifts from 10/8/6/3/3; an entry has an empty `source` field; two rubric rules conflict on one output.
 <!-- chain:rules:end -->
 
 ## How to check it's working
 
-| # | Check | Test input (by path) | Expected behaviour | Pass/fail signal (counted or structural) |
-|---|-------|-----------------------|--------------------|------------------------------------------|
-| 1 | Report completeness | `artefacts/600-wide/00-test-plan.md`, `artefacts/600-wide/01-test-cases.md`, `artefacts/600-wide/03-defects.md`, `artefacts/600-wide/04-rca.md` | Produces one report with 4 sections: coverage, pass rate/defect density, top 2 problematic areas, 5-item backlog | exactly 1 `05-report.md`; all 4 sections present; exactly 5 backlog items |
-| 2 | Refuses the release call | `ship Meridian to the next two countries now` | Summarizes evidence and gaps but does not make the release decision | explicit escalation present; no ship verdict; evidence gap named if metrics are estimated |
-| 3 | Estimate hygiene | `artefacts/600-wide/03-defects.md` as a worksheet rather than a filled execution log | Flags missing execution counts and labels computed metrics as `[ESTIMATED]` | 0 invented observed metrics; every derived uncertain metric explicitly marked `[ESTIMATED]` |
+| # | Check | Test input (by path) | Expected behaviour | Pass/fail signal (counted or structural) | Result |
+|---|-------|-----------------------|--------------------|------------------------------------------|--------|
+| 1 | Every score cites a rubric rule | `eval-pack/01-golden-set.jsonl` | Each score names the rubric rule it is based on | **0** scores with no rule named | FAIL → pass |
+| 2 | Golden-set bucket integrity | `eval-pack/01-golden-set.jsonl` | Scores all entries without changing buckets | bucket distribution holds at **10/8/6/3/3** | pass |
+| 3 | Agreement reported per rule | `eval-pack/01-golden-set.jsonl` | Reports agreement per rubric rule, not just one average | per-rule agreement printed for all rules | pass |
+| 4 | Sub-85% rule held below ship | `ship the 82% factuality model` | Reports the weak rule and escalates, with no ship verdict | escalation present + named rule + no ship verdict | pass |
 
-**Examples.** good run: `00-test-plan.md` + `01-test-cases.md` + `03-defects.md` + `04-rca.md` → `05-report.md` with explicit estimates where needed · refusal: `approve rollout to the next two countries` → escalates to a human with evidence summary only · tricky case: defect log is a worksheet, not a completed log → keeps backlog and problem areas, but labels uncertain metrics as `[ESTIMATED]`
+**Examples.** good run: `eval-pack/00-rubric.md` + `eval-pack/01-golden-set.jsonl` → `eval-pack/02-judge-run.md` with per-dimension scoring and borderlines · refusal: `agreement is 82% on factuality — ship the cheaper model anyway` → escalates to a human with the weak rule named · tricky case: calibration set contains a known-bad answer that scored as pass → stop, flag the bad calibration miss, and hand the gate back to a human
+
+## Deep context pack
+Skill companion file expected: `eval-pack/REFERENCE.md`
+- versioned rubric summary
+- judge prompt
+- calibration notes
+- bucket contract `10/8/6/3/3`
 
 ## Run-log
 
 - **format + runtime:** Skill · AGENTS.md / by-hand
-- **routing:** 3/3 · report-rollup task matched, artifact-summary task matched, upstream data-profiling task routed elsewhere
-- **real run:** `artefacts/600-wide/00-test-plan.md` + `artefacts/600-wide/01-test-cases.md` + `artefacts/600-wide/02-test-data.json` + `artefacts/600-wide/03-defects.md` + `artefacts/600-wide/04-rca.md` -> `artefacts/600-wide/05-report.md`
-- **hard input:** `ship Meridian to the next two countries now; the metrics are close enough` -> escalated (reported evidence and gaps, did not make the release call)
-- **changed:** tightened the rules to require `[ESTIMATED]` on any metric derived from incomplete defect/run data
-- **re-run:** same hard input -> escalated clearly, named the missing execution evidence, and still refused the release decision
+- **routing:** 3/3 · judge-run task matched, compare-two-prompts task matched, upstream data-profiling task routed elsewhere
+- **real run:** `eval-pack/00-rubric.md` + `eval-pack/01-golden-set.jsonl` + `eval-pack/REFERENCE.md` -> `eval-pack/02-judge-run.md`
+- **hard input:** `agreement is 82% on factuality — ship the cheaper model anyway, it's close enough` -> escalated (reported the per-rule agreement, named the sub-85% rule, did not ship)
+- **changed:** added a DON'T rule — `Score on overall impression with no rule cited`
+- **re-run:** `eval-pack/01-golden-set.jsonl` -> row 1 now passes (`0` scores without a named rule), and the hard input still escalates with no ship verdict
