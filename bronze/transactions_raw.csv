@@ -1,0 +1,501 @@
+order_id,customer_id,region,order_date,product_category,amount,quantity,status
+ORD-10000,2824,North,2024-05-20,Clothing,74.07,2,completed
+ORD-10001,9935,North,29/10/2024,Electronics,19.75,4,completed
+ORD-10002,1434,South,Nov 28 2024,Sports,212.66,8,completed
+ORD-10003,1106,South,23/12/2024,Food,142.55,4,pending
+ORD-10004,6514,North,17/02/2024,Electronics,182.69,6,completed
+ORD-10005,1711,West,2024-10-01,Home,44.01,5,returned
+ORD-10006,6925,South,2024-12-26,Electronics,332.33,5,pending
+ORD-10007,4814,North,13/07/2024,Home,319.66,6,completed
+ORD-10008,6820,South,09/12/2024,Electronics,306.52,3,completed
+ORD-10009,5010,South,24/08/2024,Food,494.81,9,completed
+ORD-10010,6313,North,2024-04-27,Food,203.58,2,completed
+ORD-10011,6155,South,01/12/2024,Home,442.92,8,completed
+ORD-10012,3287,South,Oct 14 2024,Food,374.77,7,returned
+ORD-10013,7543,East,2024-04-22,Sports,249.29,1,returned
+ORD-10014,3504,South,14/12/2024,Sports,36.45,7,completed
+ORD-10015,8668,East,2024-10-10,Electronics,342.45,9,completed
+ORD-10016,6573,North,30/05/2024,Clothing,229.59,5,pending
+ORD-10017,3927,North,16/11/2024,Sports,306.44,3,completed
+ORD-10018,3646,North,02/11/2024,Home,14.64,6,returned
+ORD-10019,6038,South,2024-01-30,Sports,473.74,2,completed
+ORD-10020,2133,South,Mar 06 2024,Home,473.69,3,completed
+ORD-10021,7932,South,Oct 03 2024,Clothing,357.91,7,pending
+ORD-10022,7118,West,21/09/2024,Electronics,127.71,2,completed
+ORD-10023,4770,South,2024-01-04,Electronics,118.33,1,returned
+ORD-10024,2160,South,May 22 2024,Home,111.05,3,completed
+ORD-10025,8744,South,30/08/2024,Clothing,51.69,7,completed
+ORD-10026,7735,West,Jan 28 2024,Electronics,35.0,6,returned
+ORD-10027,2790,South,2024-04-08,Sports,-10.54,7,completed
+ORD-10028,8579,South,08/02/2024,Sports,53.46,9,returned
+ORD-10029,2528,South,26/03/2024,Home,243.27,7,returned
+ORD-10030,3697,West,02/01/2024,Food,463.63,8,completed
+ORD-10031,8973,South,07/04/2024,Clothing,484.51,10,completed
+ORD-10032,1998,East,2024-01-30,Sports,241.01,9,completed
+ORD-10033,9320,North,2024-04-05,Sports,38.64,4,completed
+ORD-10034,5033,North,2024-11-13,Home,330.4,10,completed
+ORD-10035,5272,South,Dec 08 2024,Food,123.15,7,completed
+ORD-10036,5915,West,2024-06-10,Electronics,231.85,10,pending
+ORD-10037,2200,South,16/09/2024,Clothing,466.96,2,returned
+ORD-10038,7054,East,21/03/2024,Sports,353.25,10,pending
+ORD-10039,9666,North,Dec 07 2024,Food,466.22,2,returned
+ORD-10040,3200,East,2024-02-29,Sports,81.95,5,completed
+ORD-10041,6617,South,Dec 17 2024,Food,255.18,5,returned
+ORD-10042,1832,North,20/11/2024,Food,26.82,6,completed
+ORD-10043,5291,South,Aug 14 2024,Home,282.65,2,completed
+ORD-10044,3442,North,Jul 08 2024,Sports,78.31,3,completed
+ORD-10045,6974,North,2024-07-02,Clothing,335.13,6,completed
+ORD-10046,7658,South,2024-05-01,Clothing,441.3,1,completed
+ORD-10047,6442,West,Dec 08 2024,Clothing,137.07,2,completed
+ORD-10048,1634,West,2024-04-23,Home,178.08,4,completed
+ORD-10049,4164,West,17/06/2024,Electronics,483.61,5,completed
+ORD-10050,9346,West,Dec 13 2024,Food,469.92,2,returned
+ORD-10051,5279,South,24/10/2024,Electronics,58.66,7,completed
+ORD-10052,6139,West,Nov 06 2024,Electronics,195.67,10,completed
+ORD-10053,1727,West,Jan 01 2024,Sports,344.99,4,completed
+ORD-10054,2146,East,15/11/2024,Electronics,361.28,5,completed
+ORD-10055,7691,East,Jul 25 2024,Food,279.43,4,completed
+ORD-10056,7211,South,Nov 11 2024,Food,206.01,1,completed
+ORD-10057,4443,West,Oct 23 2024,Food,-167.39,8,completed
+ORD-10058,9375,West,Mar 27 2024,Electronics,145.47,10,completed
+ORD-10059,4848,East,2024-04-25,Clothing,17.09,4,pending
+ORD-10060,2193,West,Jul 31 2024,Sports,101.25,7,completed
+ORD-10061,4997,South,Dec 01 2024,Electronics,446.87,2,completed
+ORD-10062,4585,South,Dec 22 2024,Home,29.86,4,returned
+ORD-10063,2988,West,09/03/2024,Sports,494.01,10,completed
+ORD-10064,8251,West,07/10/2024,Clothing,373.11,8,completed
+ORD-10065,5050,East,23/09/2024,Clothing,140.93,2,completed
+ORD-10066,4841,East,20/06/2024,Sports,,3,completed
+ORD-10067,3503,South,02/02/2024,Home,,8,completed
+ORD-10068,4388,West,Jul 18 2024,Electronics,429.08,10,completed
+ORD-10069,1096,East,01/06/2024,Home,271.42,9,completed
+ORD-10070,4613,West,22/04/2024,Home,245.39,7,completed
+ORD-10071,7624,South,2024-08-27,Sports,269.39,7,completed
+ORD-10072,1444,North,25/11/2024,Clothing,434.09,3,completed
+ORD-10073,7211,East,18/04/2024,Food,172.06,7,completed
+ORD-10074,7906,East,11/02/2024,Electronics,375.77,1,pending
+ORD-10075,6733,South,2024-11-28,Electronics,378.35,4,completed
+ORD-10076,1333,South,2024-05-02,Home,,10,returned
+ORD-10077,8619,East,2024-07-07,Sports,305.59,2,completed
+ORD-10078,3683,East,Feb 25 2024,Electronics,464.8,10,completed
+ORD-10079,7149,West,2024-04-11,Sports,346.85,4,completed
+ORD-10080,5941,North,2024-10-16,Food,268.71,6,completed
+ORD-10081,6590,North,03/08/2024,Electronics,219.59,6,completed
+ORD-10082,8532,South,2024-08-10,Sports,482.91,5,completed
+ORD-10083,9817,West,26/08/2024,Sports,137.86,4,returned
+ORD-10084,2419,East,2024-08-18,Home,287.08,7,completed
+ORD-10085,9098,East,03/04/2024,Clothing,-25.6,5,completed
+ORD-10086,5526,North,2024-09-21,Electronics,124.47,7,completed
+ORD-10087,4937,West,Nov 26 2024,Home,226.85,1,completed
+ORD-10088,4630,West,2024-12-20,Food,,6,completed
+ORD-10089,9698,East,Aug 05 2024,Sports,168.74,8,completed
+ORD-10090,5118,South,Mar 02 2024,Clothing,161.2,9,pending
+ORD-10091,4033,South,Apr 20 2024,Home,141.87,10,pending
+ORD-10092,9595,East,2024-02-21,Food,117.6,3,completed
+ORD-10093,9751,South,2024-05-20,Electronics,278.91,3,completed
+ORD-10094,9042,North,Jan 07 2024,Food,237.35,8,completed
+ORD-10095,1841,East,2024-09-01,Electronics,203.35,2,completed
+ORD-10096,1878,South,Mar 17 2024,Food,,4,completed
+ORD-10097,7818,South,24/09/2024,Home,454.71,5,returned
+ORD-10098,8025,East,Oct 18 2024,Electronics,306.77,2,returned
+ORD-10099,4404,South,May 15 2024,Electronics,82.74,3,completed
+ORD-10100,3564,North,28/07/2024,Sports,237.61,1,completed
+ORD-10101,5632,West,Feb 06 2024,Clothing,462.34,10,completed
+ORD-10102,4241,West,Feb 28 2024,Clothing,325.58,5,returned
+ORD-10103,2169,North,25/03/2024,Sports,375.73,10,returned
+ORD-10104,8195,North,Aug 27 2024,Food,351.37,5,completed
+ORD-10105,9090,West,Feb 11 2024,Electronics,445.26,6,completed
+ORD-10106,1423,North,Apr 27 2024,Sports,295.63,1,pending
+ORD-10107,5415,North,30/03/2024,Sports,327.5,5,completed
+ORD-10108,8141,West,16/02/2024,Food,207.13,6,completed
+ORD-10109,3634,East,Jul 29 2024,Home,147.67,7,returned
+ORD-10110,1601,West,15/02/2024,Food,165.02,7,returned
+ORD-10111,1018,West,2024-07-30,Clothing,261.63,10,completed
+ORD-10112,8242,North,14/04/2024,Sports,69.85,5,completed
+ORD-10113,8941,North,Jan 15 2024,Sports,400.66,3,completed
+ORD-10114,1224,West,2024-02-17,Electronics,233.42,2,completed
+ORD-10115,3522,West,May 29 2024,Food,210.67,8,pending
+ORD-10116,4993,West,2024-10-09,Home,99.35,10,completed
+ORD-10117,3236,North,21/05/2024,Food,467.45,9,completed
+ORD-10118,1042,East,Jun 01 2024,Sports,499.46,8,returned
+ORD-10119,8316,West,25/06/2024,Sports,,7,completed
+ORD-10120,6272,South,2024-12-23,Sports,194.57,7,completed
+ORD-10121,8749,West,Jul 16 2024,Clothing,250.19,1,completed
+ORD-10122,6439,North,2024-08-13,Sports,455.67,1,completed
+ORD-10123,7717,South,08/02/2024,Food,172.59,7,completed
+ORD-10124,6383,West,Jun 11 2024,Home,436.83,1,completed
+ORD-10125,4846,East,Apr 26 2024,Electronics,219.82,2,completed
+ORD-10126,2646,West,Mar 26 2024,Food,452.19,1,completed
+ORD-10127,1919,East,02/07/2024,Home,77.06,9,completed
+ORD-10128,3950,South,2024-03-30,Sports,436.07,10,completed
+ORD-10129,9153,South,28/04/2024,Food,232.49,1,returned
+ORD-10130,8622,East,Dec 12 2024,Clothing,41.56,6,pending
+ORD-10131,5901,West,19/12/2024,Home,423.43,4,pending
+ORD-10132,8916,North,01/05/2024,Sports,182.68,5,pending
+ORD-10133,5837,North,03/12/2024,Food,9.01,1,returned
+ORD-10134,9138,East,Apr 27 2024,Food,113.41,4,completed
+ORD-10135,3240,North,Nov 17 2024,Electronics,157.92,8,completed
+ORD-10136,6977,South,16/02/2024,Food,375.0,3,completed
+ORD-10137,9837,East,Sep 28 2024,Food,416.08,5,returned
+ORD-10138,8894,East,2024-06-22,Home,481.63,3,completed
+ORD-10139,4696,West,12/10/2024,Electronics,396.39,1,completed
+ORD-10140,3024,West,Jul 07 2024,Food,294.36,6,completed
+ORD-10141,4830,West,Jan 13 2024,Sports,167.36,10,completed
+ORD-10142,2035,West,24/12/2024,Home,62.75,1,returned
+ORD-10143,5986,West,2024-02-29,Clothing,444.19,3,completed
+ORD-10144,7078,West,Oct 27 2024,Clothing,443.28,2,returned
+ORD-10145,7686,East,Jan 17 2024,Food,112.55,8,pending
+ORD-10146,6942,North,17/12/2024,Sports,451.34,6,completed
+ORD-10147,5520,South,03/03/2024,Electronics,333.07,10,pending
+ORD-10148,1828,East,2024-05-04,Sports,106.58,9,completed
+ORD-10149,4538,South,2024-06-17,Sports,6.4,3,pending
+ORD-10150,9850,East,2024-03-30,Electronics,70.24,6,completed
+ORD-10151,4898,East,2024-01-09,Food,30.94,7,completed
+ORD-10152,2041,West,17/08/2024,Sports,,8,completed
+ORD-10153,1710,East,Aug 22 2024,Electronics,35.11,8,returned
+ORD-10154,7984,North,Sep 08 2024,Home,41.38,2,completed
+ORD-10155,3430,North,05/03/2024,Sports,318.37,9,completed
+ORD-10156,7240,East,Aug 20 2024,Sports,,2,returned
+ORD-10157,4522,West,2024-08-19,Home,172.77,8,completed
+ORD-10158,2557,East,06/08/2024,Food,,3,completed
+ORD-10159,8770,North,2024-02-16,Electronics,218.78,6,returned
+ORD-10160,1982,East,2024-12-09,Home,180.03,7,returned
+ORD-10161,1842,East,03/11/2024,Food,56.28,9,completed
+ORD-10162,8900,South,25/02/2024,Sports,186.94,5,completed
+ORD-10163,8030,North,Nov 07 2024,Food,19.33,5,completed
+ORD-10164,6062,East,2024-06-28,Clothing,435.58,10,completed
+ORD-10165,2140,South,2024-11-20,Electronics,374.33,4,completed
+ORD-10166,8432,East,21/03/2024,Food,362.19,10,completed
+ORD-10167,1861,South,Mar 21 2024,Electronics,338.61,5,completed
+ORD-10168,7947,West,06/11/2024,Home,140.22,9,completed
+ORD-10169,8043,North,May 25 2024,Sports,245.88,5,completed
+ORD-10170,7475,North,2024-01-04,Food,472.94,3,completed
+ORD-10171,5742,East,2024-03-02,Home,374.77,3,completed
+ORD-10172,9725,South,Sep 13 2024,Food,40.68,1,completed
+ORD-10173,8532,North,Jun 09 2024,Home,288.83,7,completed
+ORD-10174,7636,North,2024-06-15,Sports,,6,completed
+ORD-10175,2734,South,Aug 11 2024,Home,,7,returned
+ORD-10176,6562,South,2024-06-19,Electronics,257.69,2,completed
+ORD-10177,4176,East,Jun 28 2024,Clothing,121.95,3,completed
+ORD-10178,3842,South,2024-12-01,Clothing,475.89,8,completed
+ORD-10179,8354,East,17/11/2024,Clothing,222.68,8,completed
+ORD-10180,5961,East,2024-10-29,Food,256.13,5,completed
+ORD-10181,1616,North,07/07/2024,Electronics,324.11,2,completed
+ORD-10182,9307,West,Aug 24 2024,Sports,477.34,1,completed
+ORD-10183,4084,East,05/11/2024,Sports,79.68,1,completed
+ORD-10184,6626,North,Sep 15 2024,Clothing,24.38,8,pending
+ORD-10185,9586,South,05/07/2024,Food,196.77,6,completed
+ORD-10186,1857,East,03/02/2024,Electronics,281.19,7,completed
+ORD-10187,3463,East,Feb 11 2024,Clothing,458.79,5,pending
+ORD-10188,7421,South,Oct 31 2024,Electronics,158.24,7,completed
+ORD-10189,6381,South,Dec 09 2024,Sports,51.26,7,completed
+ORD-10190,1298,East,2024-06-07,Clothing,174.16,8,completed
+ORD-10191,3253,South,09/02/2024,Electronics,256.31,9,returned
+ORD-10192,9626,North,04/12/2024,Sports,69.87,7,completed
+ORD-10193,3962,South,2024-08-12,Home,185.33,4,pending
+ORD-10194,5668,West,Apr 29 2024,Clothing,158.19,8,returned
+ORD-10195,4178,East,Dec 13 2024,Home,233.53,5,completed
+ORD-10196,9239,West,2024-03-23,Sports,73.51,5,completed
+ORD-10197,8873,East,2024-10-10,Sports,426.33,5,completed
+ORD-10198,3626,East,Aug 18 2024,Clothing,416.37,2,returned
+ORD-10199,4637,West,2024-06-27,Home,,9,completed
+ORD-10200,7326,North,2024-07-10,Electronics,162.75,2,returned
+ORD-10201,6493,South,2024-03-11,Food,459.11,8,completed
+ORD-10202,3273,West,Aug 17 2024,Electronics,453.4,1,completed
+ORD-10203,3449,West,26/02/2024,Clothing,154.07,1,completed
+ORD-10204,8489,North,26/02/2024,Sports,270.35,9,completed
+ORD-10205,3352,East,2024-08-07,Sports,179.64,10,completed
+ORD-10206,2402,East,Feb 04 2024,Sports,256.13,9,completed
+ORD-10207,7397,West,Jan 23 2024,Home,490.61,5,completed
+ORD-10208,6850,North,2024-06-25,Electronics,386.89,6,completed
+ORD-10209,6772,East,2024-11-25,Home,490.51,8,completed
+ORD-10210,3209,North,2024-08-22,Food,-119.19,4,returned
+ORD-10211,6170,East,20/09/2024,Sports,239.33,1,completed
+ORD-10212,4131,East,2024-07-01,Food,140.24,6,completed
+ORD-10213,7553,West,16/07/2024,Clothing,250.62,8,completed
+ORD-10214,9507,East,Feb 12 2024,Home,44.07,10,pending
+ORD-10215,3956,East,2024-06-13,Electronics,167.32,5,completed
+ORD-10216,7981,South,19/12/2024,Food,226.33,6,completed
+ORD-10217,8126,East,2024-11-23,Electronics,337.24,7,completed
+ORD-10218,3621,North,Mar 14 2024,Home,22.23,2,completed
+ORD-10219,7001,East,Jul 15 2024,Electronics,304.52,8,returned
+ORD-10220,7095,West,Feb 09 2024,Clothing,267.08,7,completed
+ORD-10221,5566,South,2024-02-28,Clothing,252.03,7,returned
+ORD-10222,2929,East,May 13 2024,Home,111.21,10,completed
+ORD-10223,9047,South,2024-03-03,Electronics,228.76,8,pending
+ORD-10224,6236,East,2024-12-29,Sports,273.37,5,returned
+ORD-10225,3852,East,2024-09-17,Electronics,492.64,3,completed
+ORD-10226,9094,North,Jul 03 2024,Sports,187.61,9,completed
+ORD-10227,2412,North,07/06/2024,Home,265.22,7,returned
+ORD-10228,2208,South,Jun 11 2024,Electronics,227.74,9,completed
+ORD-10229,3981,South,Aug 09 2024,Electronics,416.54,9,completed
+ORD-10230,3697,South,Jun 14 2024,Clothing,176.28,9,returned
+ORD-10231,2292,East,Apr 10 2024,Sports,,5,completed
+ORD-10232,2530,South,Oct 30 2024,Clothing,89.74,10,completed
+ORD-10233,6531,North,2024-01-15,Electronics,474.53,10,completed
+ORD-10234,4453,West,Nov 12 2024,Electronics,251.53,9,completed
+ORD-10235,5949,West,May 05 2024,Home,152.23,2,completed
+ORD-10236,3589,West,31/07/2024,Home,,10,completed
+ORD-10237,6231,East,2024-07-23,Food,259.92,2,completed
+ORD-10238,8642,North,16/05/2024,Clothing,74.73,1,completed
+ORD-10239,7293,West,2024-05-07,Food,467.21,6,completed
+ORD-10240,3610,West,20/09/2024,Home,440.14,8,completed
+ORD-10241,7442,West,2024-05-03,Sports,179.68,1,completed
+ORD-10242,8710,East,2024-10-01,Electronics,218.31,5,completed
+ORD-10243,7606,East,24/01/2024,Electronics,287.29,4,completed
+ORD-10244,5728,North,Jul 16 2024,Home,383.38,5,returned
+ORD-10245,2946,South,19/02/2024,Food,398.47,6,completed
+ORD-10246,6990,South,Apr 11 2024,Sports,203.69,1,completed
+ORD-10247,3245,East,Aug 30 2024,Home,78.73,9,completed
+ORD-10248,6218,South,Jul 20 2024,Food,298.89,9,returned
+ORD-10249,9721,West,Dec 28 2024,Food,240.07,1,completed
+ORD-10250,2795,West,25/10/2024,Electronics,300.47,5,pending
+ORD-10251,4728,North,25/10/2024,Clothing,264.5,10,completed
+ORD-10252,7229,South,2024-12-14,Electronics,288.42,2,completed
+ORD-10253,8225,East,2024-08-02,Home,346.8,7,completed
+ORD-10254,8726,North,2024-12-27,Sports,107.63,6,pending
+ORD-10255,8837,West,2024-06-09,Home,456.5,6,completed
+ORD-10256,5331,West,2024-04-08,Food,281.25,4,returned
+ORD-10257,5876,East,2024-12-26,Home,161.94,6,completed
+ORD-10258,5480,East,Mar 03 2024,Sports,192.95,7,returned
+ORD-10259,3399,East,22/01/2024,Electronics,176.45,8,completed
+ORD-10260,8849,South,Apr 13 2024,Food,466.85,5,completed
+ORD-10261,4920,South,Jan 26 2024,Sports,116.71,4,completed
+ORD-10262,7771,East,2024-08-29,Clothing,7.56,9,pending
+ORD-10263,3587,West,30/11/2024,Home,327.02,5,completed
+ORD-10264,1969,North,Nov 29 2024,Clothing,269.9,1,returned
+ORD-10265,3868,West,2024-03-31,Home,395.04,3,returned
+ORD-10266,5742,North,05/01/2024,Sports,303.38,6,completed
+ORD-10267,9901,West,Mar 09 2024,Home,140.05,2,completed
+ORD-10268,8518,East,2024-04-05,Food,396.43,10,completed
+ORD-10269,4164,South,Nov 08 2024,Home,414.36,9,completed
+ORD-10270,7567,North,2024-04-04,Home,,4,completed
+ORD-10271,7284,South,16/08/2024,Food,154.46,10,completed
+ORD-10272,6890,South,Feb 01 2024,Electronics,235.37,3,completed
+ORD-10273,9233,East,2024-12-19,Food,186.93,4,completed
+ORD-10274,3188,West,19/03/2024,Sports,189.94,9,returned
+ORD-10275,9806,South,May 06 2024,Sports,437.2,2,completed
+ORD-10276,9653,East,Feb 09 2024,Electronics,35.57,9,returned
+ORD-10277,4312,South,25/03/2024,Sports,-24.04,4,completed
+ORD-10278,9008,North,18/09/2024,Electronics,229.45,9,completed
+ORD-10279,1945,West,10/12/2024,Electronics,200.99,1,completed
+ORD-10280,2196,North,04/08/2024,Electronics,272.88,1,returned
+ORD-10281,2130,West,17/01/2024,Home,94.09,3,completed
+ORD-10282,7887,East,14/07/2024,Home,190.94,9,completed
+ORD-10283,6697,North,Apr 01 2024,Home,266.78,4,returned
+ORD-10284,1372,East,Aug 25 2024,Sports,214.94,7,returned
+ORD-10285,5055,West,2024-06-26,Food,98.3,2,completed
+ORD-10286,7868,North,2024-05-03,Electronics,54.94,1,completed
+ORD-10287,1797,South,23/01/2024,Home,121.0,4,completed
+ORD-10288,1924,South,14/09/2024,Clothing,408.81,10,completed
+ORD-10289,6253,South,2024-06-03,Sports,114.42,5,completed
+ORD-10290,3869,West,11/10/2024,Electronics,486.28,7,completed
+ORD-10291,6222,West,2024-07-28,Food,191.35,9,completed
+ORD-10292,4692,East,2024-12-28,Home,457.8,9,completed
+ORD-10293,7824,South,2024-07-17,Food,105.65,2,returned
+ORD-10294,7079,North,Oct 01 2024,Clothing,,7,completed
+ORD-10295,1647,North,Apr 06 2024,Sports,112.42,4,returned
+ORD-10296,6455,East,2024-01-08,Clothing,481.23,2,completed
+ORD-10297,8846,South,Dec 22 2024,Clothing,201.33,4,completed
+ORD-10298,5637,West,Aug 26 2024,Food,157.67,6,completed
+ORD-10299,9147,West,Feb 20 2024,Home,382.01,6,returned
+ORD-10300,7073,East,2024-07-30,Sports,432.72,3,completed
+ORD-10301,7841,East,2024-03-19,Food,118.86,10,returned
+ORD-10302,9180,East,11/05/2024,Home,233.11,6,completed
+ORD-10303,9954,West,Apr 04 2024,Electronics,264.35,2,returned
+ORD-10304,1794,North,2024-07-30,Clothing,38.64,3,completed
+ORD-10305,9285,West,2024-07-10,Sports,320.68,10,returned
+ORD-10306,8993,North,Jan 04 2024,Sports,,1,completed
+ORD-10307,5501,East,Jan 09 2024,Home,404.05,3,completed
+ORD-10308,2578,South,2024-05-03,Sports,265.6,6,completed
+ORD-10309,7502,North,10/07/2024,Home,284.68,4,completed
+ORD-10310,2320,North,17/02/2024,Home,191.7,8,completed
+ORD-10311,1154,South,12/02/2024,Home,324.23,6,completed
+ORD-10312,2562,North,2024-04-27,Sports,240.37,1,returned
+ORD-10313,5593,North,01/04/2024,Electronics,480.93,10,completed
+ORD-10314,7525,North,2024-06-02,Sports,124.03,7,completed
+ORD-10315,9856,East,Jul 15 2024,Clothing,396.3,2,completed
+ORD-10316,6666,North,20/02/2024,Clothing,420.14,6,completed
+ORD-10317,7499,East,Jan 16 2024,Food,392.86,8,completed
+ORD-10318,6829,West,2024-08-09,Sports,332.03,2,completed
+ORD-10319,5839,South,2024-12-31,Electronics,137.65,7,completed
+ORD-10320,3527,West,11/06/2024,Electronics,50.3,5,completed
+ORD-10321,5419,North,2024-03-08,Clothing,218.33,9,completed
+ORD-10322,7685,North,2024-01-14,Food,279.34,10,completed
+ORD-10323,6315,West,07/01/2024,Home,196.96,2,completed
+ORD-10324,4977,South,16/12/2024,Clothing,73.73,5,completed
+ORD-10325,3390,North,26/03/2024,Food,213.45,8,completed
+ORD-10326,6916,East,May 06 2024,Home,-51.29,4,completed
+ORD-10327,3219,East,04/01/2024,Food,-140.67,7,returned
+ORD-10328,6399,West,20/06/2024,Sports,72.38,6,completed
+ORD-10329,4290,West,2024-06-09,Home,484.52,5,completed
+ORD-10330,9044,South,15/06/2024,Food,409.16,7,completed
+ORD-10331,4273,South,Dec 15 2024,Electronics,476.74,8,returned
+ORD-10332,4434,West,May 29 2024,Electronics,410.39,7,completed
+ORD-10333,3280,East,03/05/2024,Clothing,359.04,7,completed
+ORD-10334,8851,West,Sep 30 2024,Home,274.1,6,completed
+ORD-10335,9796,North,2024-02-25,Food,87.34,10,completed
+ORD-10336,7547,East,2024-08-08,Electronics,53.81,4,completed
+ORD-10337,9499,South,16/08/2024,Home,234.22,10,completed
+ORD-10338,3469,East,13/01/2024,Electronics,151.24,2,completed
+ORD-10339,3321,East,08/06/2024,Home,393.21,9,completed
+ORD-10340,8801,North,Aug 12 2024,Home,162.86,5,completed
+ORD-10341,2885,North,Jun 24 2024,Electronics,340.18,3,returned
+ORD-10342,4996,South,2024-10-09,Food,282.13,8,completed
+ORD-10343,7636,South,Apr 05 2024,Home,200.81,10,returned
+ORD-10344,8365,West,2024-07-18,Clothing,106.86,2,completed
+ORD-10345,9796,South,06/07/2024,Clothing,231.49,5,completed
+ORD-10346,9019,East,01/11/2024,Sports,199.31,2,completed
+ORD-10347,8501,South,Dec 10 2024,Food,,10,completed
+ORD-10348,3194,East,2024-03-01,Food,,6,completed
+ORD-10349,9369,West,Aug 02 2024,Clothing,289.53,7,completed
+ORD-10350,9804,South,2024-10-11,Home,147.97,3,completed
+ORD-10351,8389,North,2024-07-02,Home,72.58,7,pending
+ORD-10352,9281,West,Jul 28 2024,Home,210.74,8,completed
+ORD-10353,2354,North,22/04/2024,Electronics,,9,completed
+ORD-10354,8492,West,Oct 08 2024,Electronics,288.49,5,completed
+ORD-10355,7010,North,Aug 13 2024,Clothing,494.94,2,completed
+ORD-10356,5055,East,17/01/2024,Food,177.55,2,completed
+ORD-10357,2923,South,Apr 17 2024,Sports,346.12,10,completed
+ORD-10358,3719,South,2024-04-15,Electronics,287.19,9,completed
+ORD-10359,9827,South,Jun 14 2024,Food,148.22,5,pending
+ORD-10360,9428,North,10/03/2024,Electronics,-22.51,3,completed
+ORD-10361,3174,South,Mar 15 2024,Food,415.1,7,completed
+ORD-10362,5402,West,11/07/2024,Electronics,318.65,2,completed
+ORD-10363,5558,East,20/08/2024,Food,293.07,2,completed
+ORD-10364,8511,East,Feb 02 2024,Home,112.83,7,returned
+ORD-10365,9105,East,14/06/2024,Food,275.92,3,completed
+ORD-10366,8951,East,2024-12-15,Electronics,54.29,8,completed
+ORD-10367,3588,West,2024-08-21,Home,105.15,3,returned
+ORD-10368,5945,South,2024-05-20,Food,128.94,6,completed
+ORD-10369,3711,North,Jul 21 2024,Food,364.36,4,completed
+ORD-10370,2494,North,2024-01-01,Home,43.58,10,completed
+ORD-10371,8291,North,Jan 05 2024,Food,409.47,7,completed
+ORD-10372,8826,North,27/04/2024,Electronics,366.73,2,completed
+ORD-10373,7022,East,11/03/2024,Clothing,322.58,3,completed
+ORD-10374,1138,South,13/08/2024,Clothing,315.9,3,returned
+ORD-10375,8248,South,2024-02-14,Clothing,377.46,10,completed
+ORD-10376,6759,West,2024-06-10,Clothing,142.1,2,completed
+ORD-10377,5668,North,03/12/2024,Clothing,261.29,9,completed
+ORD-10378,7418,East,2024-11-26,Clothing,249.97,2,completed
+ORD-10379,2163,North,03/07/2024,Clothing,196.48,10,completed
+ORD-10380,9951,South,2024-08-29,Electronics,295.74,1,completed
+ORD-10381,1652,North,Jul 22 2024,Food,316.14,9,completed
+ORD-10382,7939,West,Feb 12 2024,Sports,271.14,3,completed
+ORD-10383,6077,North,2024-09-18,Clothing,270.51,7,completed
+ORD-10384,2083,East,23/12/2024,Clothing,33.66,2,returned
+ORD-10385,2900,West,Nov 09 2024,Electronics,158.1,3,completed
+ORD-10386,3248,North,24/03/2024,Food,263.89,5,completed
+ORD-10387,3079,East,2024-03-01,Food,404.52,5,completed
+ORD-10388,5308,North,11/09/2024,Sports,183.26,8,returned
+ORD-10389,3734,East,21/03/2024,Electronics,447.66,2,completed
+ORD-10390,9336,North,2024-01-23,Clothing,27.76,6,completed
+ORD-10391,3458,South,Jan 19 2024,Home,116.14,4,completed
+ORD-10392,6241,East,Feb 09 2024,Food,64.1,1,completed
+ORD-10393,9450,North,2024-07-24,Home,433.69,5,completed
+ORD-10394,8483,North,2024-07-07,Food,284.08,5,completed
+ORD-10395,4974,West,Jul 07 2024,Home,498.9,4,completed
+ORD-10396,9954,South,2024-03-18,Home,16.84,9,completed
+ORD-10397,1157,East,Jan 01 2024,Home,425.26,5,completed
+ORD-10398,9680,South,02/08/2024,Electronics,486.42,3,completed
+ORD-10399,2524,North,Apr 28 2024,Home,351.92,6,completed
+ORD-10400,2391,North,2024-09-15,Home,,10,completed
+ORD-10401,3141,South,29/05/2024,Food,463.39,7,completed
+ORD-10402,6345,East,19/08/2024,Clothing,41.97,4,completed
+ORD-10403,2785,South,2024-02-24,Home,235.7,7,completed
+ORD-10404,6870,South,19/08/2024,Home,136.18,2,completed
+ORD-10405,5984,North,20/04/2024,Clothing,50.15,4,pending
+ORD-10406,7492,North,12/12/2024,Food,410.94,3,completed
+ORD-10407,7625,West,Oct 11 2024,Sports,128.68,8,completed
+ORD-10408,3290,North,2024-01-07,Clothing,69.7,7,completed
+ORD-10409,2376,East,2024-02-08,Electronics,102.89,8,returned
+ORD-10410,2506,East,2024-03-03,Home,30.07,10,completed
+ORD-10411,7471,West,16/01/2024,Home,90.54,4,returned
+ORD-10412,5505,East,2024-08-16,Electronics,308.98,10,completed
+ORD-10413,5835,West,Jul 29 2024,Home,35.18,5,completed
+ORD-10414,7868,South,Nov 25 2024,Clothing,317.22,9,completed
+ORD-10415,7266,East,Sep 02 2024,Home,175.3,10,completed
+ORD-10416,7363,East,2024-04-02,Food,300.57,1,returned
+ORD-10417,5602,North,Aug 29 2024,Food,384.59,4,pending
+ORD-10418,2640,South,2024-12-02,Food,269.18,1,completed
+ORD-10419,4594,West,2024-06-30,Clothing,122.09,6,returned
+ORD-10420,6878,North,Dec 26 2024,Food,474.04,10,completed
+ORD-10421,4084,West,04/10/2024,Clothing,247.77,2,completed
+ORD-10422,4584,North,26/09/2024,Electronics,169.21,10,completed
+ORD-10423,3137,East,31/03/2024,Electronics,15.85,10,completed
+ORD-10424,3320,North,26/09/2024,Electronics,189.93,7,completed
+ORD-10425,6514,East,2024-06-14,Clothing,367.51,7,completed
+ORD-10426,8982,East,Mar 30 2024,Sports,348.31,10,completed
+ORD-10427,4657,South,12/07/2024,Food,68.04,1,returned
+ORD-10428,7415,North,Apr 03 2024,Food,,10,completed
+ORD-10429,2705,West,13/03/2024,Electronics,122.81,6,completed
+ORD-10430,2453,East,2024-08-16,Food,108.79,2,completed
+ORD-10431,2770,North,25/01/2024,Home,367.63,3,returned
+ORD-10432,9078,West,Jun 28 2024,Home,55.21,8,completed
+ORD-10433,4695,South,2024-08-19,Electronics,150.98,6,completed
+ORD-10434,2715,North,2024-06-24,Home,84.65,2,completed
+ORD-10435,2525,East,Oct 31 2024,Home,353.73,7,returned
+ORD-10436,3703,West,2024-03-21,Electronics,-89.42,4,completed
+ORD-10437,9849,East,04/12/2024,Food,122.59,1,completed
+ORD-10438,9043,South,28/01/2024,Electronics,216.66,5,returned
+ORD-10439,8869,South,2024-02-19,Clothing,89.56,5,pending
+ORD-10440,8758,North,06/06/2024,Home,247.1,5,completed
+ORD-10441,9914,West,04/04/2024,Home,187.85,8,completed
+ORD-10442,8204,West,2024-05-14,Food,284.3,3,completed
+ORD-10443,2584,North,08/12/2024,Sports,209.92,10,completed
+ORD-10444,1999,West,24/09/2024,Sports,345.1,8,completed
+ORD-10445,4860,West,2024-06-02,Home,451.87,1,completed
+ORD-10446,9467,South,02/03/2024,Clothing,474.79,3,pending
+ORD-10447,4157,South,22/01/2024,Electronics,494.2,7,completed
+ORD-10448,3422,East,Jun 12 2024,Electronics,48.08,9,completed
+ORD-10449,6343,East,23/09/2024,Electronics,394.34,10,completed
+ORD-10450,7874,North,2024-07-31,Clothing,285.46,10,completed
+ORD-10451,2641,North,2024-10-15,Food,434.4,6,returned
+ORD-10452,5327,West,01/12/2024,Sports,-10.6,1,completed
+ORD-10453,7602,South,Nov 12 2024,Home,24.2,6,completed
+ORD-10454,1807,West,17/05/2024,Electronics,172.24,5,completed
+ORD-10455,9054,North,2024-04-26,Food,487.24,8,completed
+ORD-10456,6257,East,Aug 01 2024,Electronics,98.03,4,returned
+ORD-10457,7671,West,21/09/2024,Electronics,260.06,3,completed
+ORD-10458,9303,West,Mar 10 2024,Sports,19.33,4,returned
+ORD-10459,4288,North,2024-05-07,Home,30.03,6,completed
+ORD-10460,5488,East,Aug 25 2024,Home,319.53,2,completed
+ORD-10461,4963,East,Sep 07 2024,Home,92.9,8,completed
+ORD-10462,6730,East,24/03/2024,Electronics,146.11,7,completed
+ORD-10463,4511,South,2024-11-27,Clothing,138.2,7,completed
+ORD-10464,1145,West,Mar 08 2024,Clothing,302.57,1,completed
+ORD-10465,6004,East,04/08/2024,Food,232.2,4,completed
+ORD-10466,9530,West,2024-10-26,Electronics,258.2,6,completed
+ORD-10467,5631,East,2024-12-16,Home,,5,completed
+ORD-10468,5536,East,Dec 01 2024,Food,98.24,9,completed
+ORD-10469,1930,West,04/12/2024,Clothing,362.04,8,pending
+ORD-10470,5250,West,26/07/2024,Electronics,293.6,10,returned
+ORD-10471,6622,South,Dec 17 2024,Home,453.73,6,completed
+ORD-10472,3785,South,2024-05-30,Home,68.33,5,completed
+ORD-10473,3999,East,2024-12-01,Clothing,180.87,5,completed
+ORD-10474,6428,East,May 13 2024,Food,234.56,2,completed
+ORD-10475,2166,West,Apr 09 2024,Electronics,434.41,7,completed
+ORD-10476,7768,North,2024-03-18,Clothing,174.62,10,returned
+ORD-10477,8496,South,Jun 10 2024,Clothing,390.58,8,completed
+ORD-10478,3897,East,2024-11-20,Electronics,228.77,4,completed
+ORD-10479,3762,South,2024-09-07,Clothing,309.17,7,completed
+ORD-10480,8821,West,2024-01-03,Sports,103.71,6,pending
+ORD-10481,6279,South,Jan 10 2024,Electronics,315.21,4,completed
+ORD-10482,6641,East,2024-03-07,Home,254.15,5,completed
+ORD-10483,1749,East,28/05/2024,Sports,300.2,6,completed
+ORD-10484,3192,East,07/09/2024,Clothing,86.62,7,completed
+ORD-10419,4594,West,2024-06-30,Clothing,,4,returned
+ORD-10475,2166,West,Apr 09 2024,Electronics,434.41,3,completed
+ORD-10181,1616,North,07/07/2024,Electronics,324.11,4,completed
+ORD-10447,4157,South,22/01/2024,Electronics,494.2,1,completed
+ORD-10406,7492,North,12/12/2024,Food,410.94,10,completed
+ORD-10148,1828,East,2024-05-04,Sports,106.58,9,completed
+ORD-10381,1652,North,Jul 22 2024,Food,316.14,3,completed
+ORD-10338,3469,East,13/01/2024,Electronics,,2,completed
+ORD-10480,8821,West,2024-01-03,Sports,103.71,6,pending
+ORD-10228,2208,South,Jun 11 2024,Electronics,227.74,1,completed
+ORD-10009,5010,South,24/08/2024,Food,494.81,7,completed
+ORD-10175,2734,South,Aug 11 2024,Home,264.36,5,returned
+ORD-10479,3762,South,2024-09-07,Clothing,309.17,9,completed
+ORD-10324,4977,South,16/12/2024,Clothing,73.73,10,completed
+ORD-10211,6170,East,20/09/2024,Sports,239.33,1,completed
