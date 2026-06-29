@@ -1,24 +1,24 @@
+```mermaid
 flowchart LR
-    U[Customer Browser / Mobile App]
-    CDN[CDN / Edge]
-    WAF[WAF / Load Balancer]
+    U[Customer Browser or Mobile App]
+    CDN[CDN or Edge]
+    WAF[WAF or Load Balancer]
     APIGW[API Gateway]
     CART[cart-api Service]
     REDIS[(Redis Cache)]
-    PG[(Postgres Orders / Cart DB)]
+    PG[(Postgres Orders and Cart DB)]
     DIAL[EPAM DIAL Gateway]
     LLM[Language Model Provider]
     IDP[Identity Provider]
-    LOGS[(Audit / App Logs)]
+    LOGS[(Audit and App Logs)]
     OBS[Observability Stack]
 
-    subgraph TB1["Trust Boundary 1: User ↔ Application Perimeter"]
+    subgraph TB1["Trust Boundary 1: User to Application Perimeter"]
         U
         CDN
         WAF
         APIGW
     end
-    style TB1 stroke-dasharray: 5 5
 
     subgraph TB2["Trust Boundary 2: App Service Tier"]
         CART
@@ -27,40 +27,43 @@ flowchart LR
         LOGS
         OBS
     end
-    style TB2 stroke-dasharray: 5 5
 
-    subgraph TB3["Trust Boundary 3: Third-Party / External Services"]
+    subgraph TB3["Trust Boundary 3: Third-Party and External Services"]
         DIAL
         LLM
         IDP
     end
-    style TB3 stroke-dasharray: 5 5
 
-    U -->|checkout request (untrusted)| CDN
+    style TB1 stroke-dasharray: 5,5
+    style TB2 stroke-dasharray: 5,5
+    style TB3 stroke-dasharray: 5,5
+
+    U -->|checkout request, untrusted| CDN
     CDN -->|HTTPS request| WAF
     WAF -->|routed API call| APIGW
-    APIGW -->|authenticated cart / checkout request| CART
+    APIGW -->|authenticated cart and checkout request| CART
 
-    CART -->|session / cart lookup| REDIS
+    CART -->|session and cart lookup| REDIS
     REDIS -->|cached cart state| CART
 
-    CART -->|read/write orders and cart data| PG
-    PG -->|order / cart records| CART
+    CART -->|read and write orders and cart data| PG
+    PG -->|order and cart records| CART
 
-    CART -->|OIDC / token validation| IDP
-    IDP -->|identity claims / auth result| CART
+    CART -->|OIDC token validation| IDP
+    IDP -->|identity claims and auth result| CART
 
-    CART -->|cart summary prompt + cart contents| DIAL
+    CART -->|cart summary prompt and cart contents| DIAL
     DIAL -->|governed model request| LLM
     LLM -->|summary response| DIAL
     DIAL -->|model response| CART
 
-    CART -->|application / audit events| LOGS
+    CART -->|application and audit events| LOGS
     CART -->|metrics, logs, traces| OBS
-    APIGW -->|gateway metrics / access logs| OBS
-    DIAL -->|AI gateway telemetry / cost signals| OBS
+    APIGW -->|gateway metrics and access logs| OBS
+    DIAL -->|AI gateway telemetry and cost signals| OBS
 
-    CART -->|checkout response / cart summary| APIGW
+    CART -->|checkout response and cart summary| APIGW
     APIGW -->|HTTPS response| WAF
     WAF -->|response| CDN
     CDN -->|response| U
+```
