@@ -1,4 +1,3 @@
-```mermaid
 flowchart LR
     U[Customer Browser or Mobile App]
     CDN[CDN or Edge]
@@ -34,10 +33,6 @@ flowchart LR
         IDP
     end
 
-    style TB1 stroke-dasharray: 5,5
-    style TB2 stroke-dasharray: 5,5
-    style TB3 stroke-dasharray: 5,5
-
     U -->|checkout request, untrusted| CDN
     CDN -->|HTTPS request| WAF
     WAF -->|routed API call| APIGW
@@ -66,4 +61,3 @@ flowchart LR
     APIGW -->|HTTPS response| WAF
     WAF -->|response| CDN
     CDN -->|response| U
-```
