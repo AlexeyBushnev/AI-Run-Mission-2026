@@ -1,0 +1,38 @@
+[
+  {
+    "request_number": 1,
+    "allowed": true,
+    "status_code": 200,
+    "reason": "ok"
+  },
+  {
+    "request_number": 2,
+    "allowed": true,
+    "status_code": 200,
+    "reason": "ok"
+  },
+  {
+    "request_number": 3,
+    "allowed": true,
+    "status_code": 200,
+    "reason": "ok"
+  },
+  {
+    "request_number": 4,
+    "allowed": true,
+    "status_code": 200,
+    "reason": "ok"
+  },
+  {
+    "request_number": 5,
+    "allowed": true,
+    "status_code": 200,
+    "reason": "ok"
+  },
+  {
+    "request_number": 6,
+    "allowed": false,
+    "status_code": 429,
+    "reason": "rate_limit_exceeded"
+  }
+]
