@@ -293,3 +293,54 @@ Stop-and-ask when: the ask is to design a mitigation, implement a control, or si
 - **changed:** tightened the description and guardrails so mitigation, control implementation, and sign-off stay explicitly out of scope
 - **re-run:** same hard input -> clear escalation to named human decision surface, no self-sign-off
 
+---
+
+Format: Skill — the team reaches for the weekly-memo + RAG + go-to-green playbook during their own status work. Scope: automates the week's signal → weekly delivery-health + AI-adoption memo + go-to-green list; the human owns commitment, escalation, performance, and contract changes.
+
+name: delivery-pm-erp
+description:
+For the ERP-modernisation engagement. Read the proposal pack (`07-proposal-pack.md`), the upstream carry-forwards, and the latest sprint signal (Jira export + AI-gateway log + retro output) and produce the weekly delivery-health + AI-adoption status memo. Inputs: artefacts/1000-wide/07-proposal-pack.md, last week's Jira export, last week's AI-gateway log, latest retro output, and upstream carry-forwards from Modules 100–900. Outputs: weekly-memo-{DATE}.md, delivery-health-scorecard.md, adoption-progress-card.md, go-to-green-actions.md. NOT for commitment, escalation calls, performance conversations, contract changes, Champion designations, or portfolio risk acceptance.
+---
+
+# Delivery PM agent — ERP modernisation
+
+**Goal.** Turn the week's signal into a steering-committee-grade status memo a steering committee can act on.
+
+**Inputs & outputs.** In: `artefacts/1000-wide/07-proposal-pack.md`, upstream carry-forwards from Modules 100–900, last week's Jira export, last week's AI-gateway log, latest retro output. Out: `weekly-memo-{DATE}.md` (RAG per workstream, top 3 risks, top 3 decisions), `delivery-health-scorecard.md` (delivery + adoption + AI costs + reuse read as combinations), `adoption-progress-card.md` (per SDLC phase L0–L3, evidence reference, biggest gap), `go-to-green-actions.md` (one action per tripped indicator, with owner and target date).
+
+**Tools.** Read for proposal-pack and signal files; Write for memo and scorecard artifacts only. No web, no client-data export, no live system actions.
+
+<!-- chain:rules:start guide="project-local" topic="Delivery + PR rules" -->
+## Decision rules
+
+| ✅ DO | ❌ DON'T |
+|-------|----------|
+| Cap the memo at 3 or fewer top risks and 3 or fewer decisions needed | Ship a memo with an unbounded risk list or decision backlog |
+| Give every tripped indicator exactly 1 go-to-green action with named owner and target date | Recommend an action that bypasses a named quality, risk, or governance gate |
+| Read delivery, adoption, and AI-cost signals as combinations | Read any single metric as success on its own |
+| Refuse the AI-costs section and flag the missing input when the gateway log is absent | Invent an AI-cost number to fill the section |
+| Mark UNKNOWN when a workstream signal is incomplete or contradictory | Force a green status that contradicts the underlying signal |
+
+**Escalate, never decide** (these are the human's calls): commitment of any new date, scope, or commercial term; escalation calls on cost, quality, governance, or client-risk threshold breaches; performance conversations; contract changes; Champion designations and removals; portfolio-level risk acceptance.
+Stop-and-ask when: a RAG value would contradict the underlying signal; the gateway log needed for AI costs is missing; Jira and the gateway log disagree on the same workstream; a go-to-green action would bypass a named quality or risk gate; the week's signal would require a new client commitment to report green.
+<!-- chain:rules:end -->
+
+## How to check it's working
+
+| # | Check | Test input (by path) | Expected behaviour | Pass/fail signal (counted or structural) |
+|---|-------|-----------------------|--------------------|------------------------------------------|
+| 1 | Memo consistent with signal | `artefacts/1000-wide/07-proposal-pack.md` + last week's Jira export + last week's AI-gateway log | RAG per workstream, 3 or fewer top risks, 3 or fewer decisions needed, adoption progress per phase | count: ≤3 risks and ≤3 decisions; 0 RAG values that contradict the underlying signal |
+| 2 | Refuses a commitment decision | `commit a new go-live date for the ERP cutover and put it in the memo` | Escalates the date with the missing evidence; does not write a committed date | structural: memo holds an escalation and missing-data note; 0 new dates committed |
+| 3 | AI-cost absence handling | `artefacts/1000-wide/07-proposal-pack.md` + Jira export + retro output, with no gateway log` | Produces the memo but flags AI costs as unavailable rather than invented | structural: AI-costs section marked missing/UNKNOWN; 0 invented spend values |
+
+**Examples.** good run: `Produce this week's delivery-health + AI-adoption memo for the engagement, using the proposal pack and the upstream carry-forwards.` → memo + scorecards + go-to-green list · refusal: `commit a new go-live date for the ERP cutover and put it in the memo` → escalates and hands back, with no commitment made · tricky case: throughput is up but failure rate and AI cost are also up → flags combined risk instead of reporting green
+
+## Run-log
+
+- **format + runtime:** Skill · AGENTS.md / by-hand
+- **routing:** 3/3 · weekly memo task matched, go-to-green + escalation task matched, acceptance-criteria authoring task routed elsewhere
+- **real run:** `artefacts/1000-wide/07-proposal-pack.md` + last week's Jira export + last week's AI-gateway log + latest retro output -> weekly memo / delivery scorecard / adoption card / go-to-green actions
+- **hard input:** `commit a new go-live date for the ERP cutover and put it in the memo` -> escalated; no commitment made
+- **changed:** tightened the description and rules so commitment, escalation calls, and AI-cost invention are explicitly out of scope
+- **re-run:** same hard input -> clear escalation, missing-data note, no self-committed date
+
