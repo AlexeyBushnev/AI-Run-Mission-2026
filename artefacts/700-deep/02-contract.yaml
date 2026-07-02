@@ -1,0 +1,106 @@
+apiVersion: v3.1.0
+kind: DataContract
+id: nordstar.regional-sales.gold-daily-sales
+name: gold_daily_sales
+version: 1.0.0
+status: active
+description:
+  purpose: Daily regional sales by product category for weekly planning meetings and monthly board reporting.
+  usage: Regional managers consume only their own region's data; board-facing consumers may access all regions.
+team:
+  - username: aleksei.bushnev
+    role: Owner
+servers:
+  local_duckdb:
+    type: duckdb
+    path: gold/gold_daily_sales.parquet
+schema:
+  - name: gold_daily_sales
+    physicalType: table
+    description: Daily gold sales fact at order_date x region_id x product_category grain.
+    properties:
+      daily_sales_id:
+        logicalType: string
+        physicalType: VARCHAR
+        required: true
+        description: Surrogate primary key for the daily sales record.
+      order_date:
+        logicalType: date
+        physicalType: DATE
+        required: true
+        description: Reporting date and part of the grain.
+      region_id:
+        logicalType: string
+        physicalType: VARCHAR
+        required: true
+        description: Stable region identifier used for joins and row-level security.
+      region_name:
+        logicalType: string
+        physicalType: VARCHAR
+        required: true
+        description: Human-readable region name.
+      product_category:
+        logicalType: string
+        physicalType: VARCHAR
+        required: true
+        description: Product category and part of the grain.
+      order_count:
+        logicalType: integer
+        physicalType: INTEGER
+        required: true
+        description: Count of completed orders in the grain.
+      sold_quantity:
+        logicalType: integer
+        physicalType: INTEGER
+        required: true
+        description: Sum of sold item quantity for completed sales.
+      total_revenue_amount:
+        logicalType: number
+        physicalType: DOUBLE
+        required: true
+        description: Sum of completed-sales revenue amount.
+      return_order_count:
+        logicalType: integer
+        physicalType: INTEGER
+        required: true
+        description: Count of returned orders associated with the grain.
+      is_late_arriving_data:
+        logicalType: boolean
+        physicalType: BOOLEAN
+        required: true
+        description: True when the record was produced from late-arriving source data.
+      created_at:
+        logicalType: timestamp
+        physicalType: TIMESTAMP
+        required: true
+        description: Record creation timestamp.
+      updated_at:
+        logicalType: timestamp
+        physicalType: TIMESTAMP
+        required: true
+        description: Record update timestamp.
+quality:
+  - type: sql
+    description: No nulls in order_date
+    query: SELECT COUNT(*) = 0 FROM gold_daily_sales WHERE order_date IS NULL
+  - type: sql
+    description: order_count must be greater than 0
+    query: SELECT COUNT(*) = 0 FROM gold_daily_sales WHERE order_count <= 0
+  - type: sql
+    description: Grain uniqueness on order_date + region_id + product_category
+    query: |
+      SELECT COUNT(*) = 0
+      FROM (
+        SELECT order_date, region_id, product_category, COUNT(*) AS row_count
+        FROM gold_daily_sales
+        GROUP BY order_date, region_id, product_category
+        HAVING COUNT(*) > 1
+      ) dupes
+slaProperties:
+  freshness:
+    threshold: 24h
+    description: Data must be available within 24 hours of each day's close.
+  availability:
+    threshold: 99%
+    description: Successful scheduled publication target.
+# Approved by: Aleksei Bushnev
