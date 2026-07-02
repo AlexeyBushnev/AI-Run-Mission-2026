@@ -1,0 +1,45 @@
+name: daily_sales_by_category
+fullyQualifiedName: nordstar.customer360.gold.daily_sales_by_category
+displayName: Daily Sales by Category
+description: Daily totals of completed sales revenue and order volume for each product category. This table is used for regional sales reporting, finance-facing summaries, and operational dashboarding.
+owner:
+  name: Aleksei Bushnev
+  email: aleksei.bushnev@example.com
+  team: Nordstar Customer 360 Data
+columns:
+  - name: order_date
+    dataType: DATE
+    description: Calendar day the sales are reported for.
+    tags:
+      - non-PII
+      - business-date
+  - name: product_category
+    dataType: STRING
+    description: Product type sold on that day, such as Electronics, Home, Beauty, or Sports.
+    tags:
+      - non-PII
+      - business-dimension
+  - name: total_revenue
+    dataType: DOUBLE
+    description: Total revenue from completed sales for the day and product category.
+    tags:
+      - non-PII
+      - financial-metric
+  - name: order_count
+    dataType: INTEGER
+    description: Number of completed orders included in the day and category total.
+    tags:
+      - non-PII
+      - business-metric
+  - name: sold_quantity
+    dataType: INTEGER
+    description: Total number of items sold for the day and category.
+    tags:
+      - non-PII
+      - business-metric
+dataProducts:
+  - Regional Sales Performance Report
+retentionPeriod: P3Y
+tier: Tier1
+sourceUrl: gold/gold_daily_sales.parquet
+updatedAt: "2026-07-02"
